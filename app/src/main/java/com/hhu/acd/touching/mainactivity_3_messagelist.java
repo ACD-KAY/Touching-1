@@ -31,7 +31,7 @@ public class mainactivity_3_messagelist extends AppCompatActivity {
             public void onTabSelected(int position) {
             }
             @Override
-            public void onTabUnselected(int position) {]
+            public void onTabUnselected(int position) {
             }
             @Override
             public void onTabReselected(int position) {
