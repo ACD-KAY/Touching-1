@@ -42,24 +42,25 @@
             android:layout_marginRight="5dp"/>
 
     </android.support.v7.widget.Toolbar>
-    <LinearLayout
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:orientation="vertical"
-        >
+        android:id="@+id/content">-->
         <com.ajguan.library.EasyRefreshLayout
-        android:id="@+id/easylayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+                android:id="@+id/easylayout"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
 
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            />
-    </com.ajguan.library.EasyRefreshLayout>
-    </LinearLayout>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/my_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"/>
+        </com.ajguan.library.EasyRefreshLayout>
+    <!--</LinearLayout>-->
 
     <!--<TabHost
         android:id="@+id/tabhost"

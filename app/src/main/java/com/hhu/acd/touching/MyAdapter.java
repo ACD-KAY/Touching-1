@@ -1,33 +1,58 @@
 package com.hhu.acd.touching;
 
-import android.support.annotation.LayoutRes;
-import android.support.annotation.Nullable;
+import android.support.v7.widget.RecyclerView;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.TextView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
-import com.chad.library.adapter.base.BaseViewHolder;
-
-import java.util.List;
+import java.util.ArrayList;
 
 /**
- * Created by liziming on 18-1-17.
+ * Created by liziming on 18-1-21.
  */
 
-public class MyAdapter extends BaseQuickAdapter<Model, BaseViewHolder> {
+public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
 
-    public MyAdapter(@LayoutRes int layoutResId, @Nullable List<Model> data) {
-        super(layoutResId, data);
+    private ArrayList<String> mData;
+
+    public MyAdapter(ArrayList<String> data) {
+        this.mData = data;
+    }
+
+    public void updateData(ArrayList<String> data) {
+        this.mData = data;
+        notifyDataSetChanged();
     }
 
     @Override
-    protected void convert(BaseViewHolder helper, Model item) {
-        //可链式调用赋值
-        helper.setText(R.id.tv_title, item.getTitle())
-                .setText(R.id.tv_content, item.getContent())
-                .setImageResource(R.id.iv_img, R.mipmap.ic_launcher);
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        // 实例化展示的view
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_rv_item, parent, false);
+        // 实例化viewholder
+        ViewHolder viewHolder = new ViewHolder(v);
+        return viewHolder;
+    }
 
-        //获取当前条目position
-        //int position = helper.getLayoutPosition();
+    @Override
+    public void onBindViewHolder(ViewHolder holder, int position) {
+        // 绑定数据
+        holder.mTv.setText(mData.get(position));
+    }
+
+    @Override
+    public int getItemCount() {
+        return mData == null ? 0 : mData.size();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder {
+
+        TextView mTv;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mTv = (TextView) itemView.findViewById(R.id.item_tv);
+        }
     }
 }
-
 

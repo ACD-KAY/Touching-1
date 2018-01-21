@@ -8,8 +8,10 @@ import android.os.Bundle;
 
 import android.support.v7.app.AppCompatActivity;
 
-import java.util.List;
+import java.util.ArrayList;
 
+
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
@@ -21,11 +23,12 @@ import android.widget.TextView;
 
 public class mainactivity_3_message extends AppCompatActivity {
 
-    private RecyclerView  recyclerView;
-    private List<Model> datas;
-    private MyAdapter adapter;
-    ImageButton red, blue;
 
+    private RecyclerView mRecyclerView;
+
+    private RecyclerView.Adapter mAdapter;
+
+    private RecyclerView.LayoutManager mLayoutManager;
     private PopupWindow mDropdown = null;
     LayoutInflater mInflater;
     ImageButton pop;
@@ -38,7 +41,8 @@ public class mainactivity_3_message extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
-
+        initData();
+        initView();
         pop = findViewById(R.id.addfriends);
         pop.setOnClickListener(new View.OnClickListener() {
 
@@ -50,63 +54,32 @@ public class mainactivity_3_message extends AppCompatActivity {
             }
         });
 
-    getSupportActionBar().setDisplayShowTitleEnabled(false);}
-        /*//初始化RecyclerView
-        recyclerView =  findViewById(R.id.recycler_view);
-
-        //模拟的数据（实际开发中一般是从网络获取的）
-        datas = new ArrayList<>();
-        Model model;
-        for (int i = 0; i < 15; i++) {
-            model = new Model();
-            model.setTitle("我是第" + i + "条标题");
-            model.setContent("第" + i + "条内容");
-            datas.add(model);
-        }
-
-        //创建布局管理
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerView.setLayoutManager(layoutManager);
-
-        //创建适配器
-        adapter = new MyAdapter(R.layout.item_rv, datas);
-
-        //给RecyclerView设置适配器
-        recyclerView.setAdapter(adapter);*/
-//        setOverflowShowingAlways();
-
-  /*  @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.messagelistmenu, menu);
-        return true;
-    }
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.toolbar_add) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-    private void setOverflowShowingAlways() {
-        try {
-            ViewConfiguration config = ViewConfiguration.get(this);
-            Field menuKeyField = ViewConfiguration.class.getDeclaredField("sHasPermanentMenuKey");
-            menuKeyField.setAccessible(true);
-            menuKeyField.setBoolean(config, false);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    getSupportActionBar().setDisplayShowTitleEnabled(false);
     }
 
-*/
+    private void initData() {
+      mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+      mAdapter = new MyAdapter(getData());
+    }
+
+    private void initView() {
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        // 设置布局管理器
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        // 设置adapter
+        mRecyclerView.setAdapter(mAdapter);
+    }
+
+    private ArrayList<String> getData() {
+        ArrayList<String> data = new ArrayList<>();
+        String temp = " item";
+        for(int i = 0; i < 20; i++) {
+            data.add(i + temp);
+        }
+
+        return data;
+    }
+
 
     private PopupWindow initiatePopupWindow() {
 
@@ -121,8 +94,8 @@ public class mainactivity_3_message extends AppCompatActivity {
             itema.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i=new Intent(mainactivity_3_message.this,);
-                    startActivity(i);
+                    //Intent i=new Intent(mainactivity_3_message.this,);
+                    //startActivity(i);
                 }
             });
 
