@@ -20,13 +20,14 @@ import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class mainactivity_3_message extends AppCompatActivity {
 
 
     private RecyclerView mRecyclerView;
 
-    private RecyclerView.Adapter mAdapter;
+    private MyAdapter mAdapter;
 
     private RecyclerView.LayoutManager mLayoutManager;
     private PopupWindow mDropdown = null;
@@ -59,7 +60,7 @@ public class mainactivity_3_message extends AppCompatActivity {
 
     private void initData() {
       mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-      mAdapter = new MyAdapter(getData());
+      mAdapter = new MyAdapter(this,getData());
     }
 
     private void initView() {
@@ -68,13 +69,26 @@ public class mainactivity_3_message extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
         mRecyclerView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(View view, int position) {
+                Toast.makeText(mainactivity_3_message.this,"click " + position + " item", Toast.LENGTH_SHORT).show();
+            }
+
+            //@Override
+            //public void onItemLongClick(View view, int position) {
+                //Toast.makeText(MDRvActivity.this,"long click " + position + " item", Toast.LENGTH_SHORT).show();
+            //}
+        });
+
+
     }
 
-    private ArrayList<String> getData() {
-        ArrayList<String> data = new ArrayList<>();
-        String temp = " item";
-        for(int i = 0; i < 20; i++) {
-            data.add(i + temp);
+    private ArrayList<message_data> getData() {
+        ArrayList<message_data> data = new ArrayList<>();
+        int url= R.mipmap.bussiness_man;
+        for(int i = 0; i < 15; i++) {
+            data.add(new message_data(url," 李子铭","这只是测试",1998));
         }
 
         return data;
