@@ -3,6 +3,7 @@ package com.hhu.acd.touching;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
@@ -21,6 +22,8 @@ import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.stfalcon.multiimageview.MultiImageView;
 
 public class mainactivity_3_message extends AppCompatActivity {
 
@@ -42,6 +45,7 @@ public class mainactivity_3_message extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
+        //((MultiImageView)findViewById(R.id.chat_item_test)).addImage(BitmapFactory.decodeResource(getResources(),R.mipmap.bussiness_man));
         initData();
         initView();
         pop = findViewById(R.id.addfriends);
@@ -86,7 +90,7 @@ public class mainactivity_3_message extends AppCompatActivity {
 
     private ArrayList<message_data> getData() {
         ArrayList<message_data> data = new ArrayList<>();
-        int url= R.mipmap.bussiness_man;
+        int url= R.drawable.bussiness_man;
         for(int i = 0; i < 15; i++) {
             data.add(new message_data(url," 李子铭","这只是测试",1998));
         }

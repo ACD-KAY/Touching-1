@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+
 import com.stfalcon.multiimageview.MultiImageView;
 
 import java.io.InputStream;
@@ -51,9 +52,9 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
-        Bitmap bitmap=BitmapFactory.decodeResource(resources,R.mipmap.bussiness_man);
+        Bitmap bitmap=BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
         holder.chat_item_portrait.addImage(bitmap);
-        //holder.chat_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
+        holder.chat_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
         holder.name.setText(mData.get(position).getName());
         holder.message.setText(mData.get(position).getMassage());
 
