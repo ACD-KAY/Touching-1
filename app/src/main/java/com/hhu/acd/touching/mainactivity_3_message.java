@@ -112,8 +112,9 @@ public class mainactivity_3_message extends AppCompatActivity {
             itema.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    //Intent i=new Intent(mainactivity_3_message.this,);
-                    //startActivity(i);
+                    Intent i=new Intent(mainactivity_3_message.this,mainactivity_5_linkman.class);
+                    startActivity(i);
+                    finish();
                 }
             });
 
@@ -133,6 +134,11 @@ public class mainactivity_3_message extends AppCompatActivity {
         }
         return mDropdown;
 
+    }
+    public void link_man(View view){
+        Intent i=new Intent(mainactivity_3_message.this,mainactivity_5_linkman.class);
+        startActivity(i);
+        finish();
     }
 
     }

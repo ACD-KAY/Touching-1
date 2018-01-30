@@ -1,6 +1,77 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/primary"
+        android:fitsSystemWindows="true"
+        app:contentInsetLeft="0dp"
+        >
 
+        <ImageButton
+            android:id="@+id/mymeeting_back"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:src="@drawable/vector_drawable_back"
+            android:background="@color/primary"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:onClick="link_man"
+            />
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="我的会议"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="@color/primary_text"/>
+
+
+        <ImageButton
+            android:id="@+id/new_meeting_request"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:background="@color/primary"
+            android:padding="0dp"
+            android:scaleType="fitXY"
+            android:src="@drawable/vector_drawable_new_meeting_request"
+            android:layout_marginRight="10dp"/>
+
+    </android.support.v7.widget.Toolbar>
+    <android.support.design.widget.TabLayout
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        app:tabIndicatorColor="@color/primary_light"
+        android:id="@+id/my_meeting_tl">
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我参加的"/>
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我发布的"/>
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我收藏的"/>
+        <android.support.design.widget.TabItem
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的笔记"/>
+
+    </android.support.design.widget.TabLayout>
+    <android.support.v4.view.ViewPager
+        android:layout_height="0dp"
+        android:layout_width="match_parent"
+        android:layout_weight="1"
+        android:id="@+id/my_meeting_vp">
+
+    </android.support.v4.view.ViewPager>
 </LinearLayout>
