@@ -1,6 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+    <com.stfalcon.multiimageview.MultiImageView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_margin="5dp"
+        android:layout_alignParentLeft="true"
+        android:id="@+id/meeting_image"
+        android:background="@color/primary"/>
+    <TextView
+        android:id="@+id/meeting_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/meeting_image"
+        android:layout_marginTop="5dp"
+        android:textColor="@color/primary_text"
+        android:text="111111111"
+        android:textSize="16dp"
+        android:singleLine="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meeting_name"
+        android:layout_toEndOf="@id/meeting_image"
+        android:id="@+id/meeting_time"
+        android:textColor="@color/secondary_text"
+        android:text="time:2222222"
+        android:textSize="11dp"
+        android:singleLine="true"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/meeting_time"
+        android:layout_toEndOf="@id/meeting_image"
+        android:textSize="11dp"
+        android:textColor="@color/secondary_text"
+        android:text="place222222222222222"
+        android:singleLine="true"
+        android:id="@+id/meeting_place"/>
+
 
 </RelativeLayout>
