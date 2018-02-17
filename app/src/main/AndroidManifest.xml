@@ -21,6 +21,8 @@
         <activity android:name=".mainactivity_6_my_meeting">
 
         </activity>
-    </application>
 
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 </manifest>

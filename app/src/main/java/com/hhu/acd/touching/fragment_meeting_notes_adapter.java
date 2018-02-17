@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,46 +16,46 @@ import com.stfalcon.multiimageview.MultiImageView;
 import java.util.ArrayList;
 
 /**
- * Created by liziming on 18-1-31.
+ * Created by liziming on 18-2-2.
  */
 
-public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meeting_adapter.ViewHolder> {
-    private fragment_meeting_adapter.OnItemClickListener onItemClickListener;
-    private ArrayList<meeting_data> mData;
+public class fragment_meeting_notes_adapter extends RecyclerView.Adapter<fragment_meeting_notes_adapter.ViewHolder> {
+    private fragment_meeting_notes_adapter.OnItemClickListener onItemClickListener;
+    private ArrayList<notes_data> mData;
     private Context context;
     private Resources resources;
-    public fragment_meeting_adapter(Context context,ArrayList<meeting_data> data) {
+    public fragment_meeting_notes_adapter(Context context,ArrayList<notes_data> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
     }
 
-    public void updateData(ArrayList<meeting_data> data) {
+    public void updateData(ArrayList<notes_data> data) {
         this.mData = data;
         notifyDataSetChanged();
     }
-    public void setOnItemClickListener(fragment_meeting_adapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(fragment_meeting_notes_adapter.OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
 
     @Override
-    public fragment_meeting_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public fragment_meeting_notes_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 实例化展示的view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_meeting_brief_message_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_meeting_notes_item, parent, false);
         // 实例化viewholder
-        fragment_meeting_adapter.ViewHolder viewHolder = new fragment_meeting_adapter.ViewHolder(v);
+        fragment_meeting_notes_adapter.ViewHolder viewHolder = new fragment_meeting_notes_adapter.ViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final fragment_meeting_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final fragment_meeting_notes_adapter.ViewHolder holder, int position) {
         // 绑定数据
-        Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
+        /*Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
         holder.meeting_image.addImage(bitmap);
         holder.meeting_image.setShape(MultiImageView.Shape.CIRCLE);
-        holder.meeting_name.setText(mData.get(position).getMeeting_name());
-        holder.meeting_time.setText(mData.get(position).getMeeting_time());
-        holder.meeting_place.setText(mData.get(position).getMeeting_place());
+        holder.meeting_name.setText(mData.get(position).getMeeting_name());*/
+        holder.note_time.setText(mData.get(position).getNotestime());
+        holder.note_content.setText(mData.get(position).getNotescontent());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -76,16 +77,16 @@ public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meet
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MultiImageView meeting_image;
-        TextView meeting_name;
-        TextView meeting_time;
-        TextView meeting_place;
+        //MultiImageView meeting_image;
+        TextView note_time;
+        TextView note_content;
+        //TextView meeting_place;
         public ViewHolder(View itemView) {
             super(itemView);
-            meeting_image= itemView.findViewById(R.id.meeting_image);
-            meeting_name=itemView.findViewById(R.id.meeting_name);
-            meeting_time=itemView.findViewById(R.id.meeting_time);
-            meeting_place=itemView.findViewById(R.id.meeting_place);
+            //meeting_image= itemView.findViewById(R.id.meeting_image);
+            //meeting_name=itemView.findViewById(R.id.meeting_name);
+            note_time=itemView.findViewById(R.id.meeting_notes_time);
+            note_content=itemView.findViewById(R.id.meeting_notes_content);
         }
     }
     public interface OnItemClickListener {

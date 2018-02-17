@@ -49,7 +49,7 @@
         android:layout_width="match_parent"
         app:tabIndicatorColor="@color/primary_light"
         android:id="@+id/my_meeting_tl">
-        <android.support.design.widget.TabItem
+        <!--<android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="我参加的"/>
@@ -64,7 +64,7 @@
         <android.support.design.widget.TabItem
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="我的笔记"/>
+            android:text="我的笔记"/>-->
 
     </android.support.design.widget.TabLayout>
     <android.support.v4.view.ViewPager

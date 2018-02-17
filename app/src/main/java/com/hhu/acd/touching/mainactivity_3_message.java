@@ -112,7 +112,7 @@ public class mainactivity_3_message extends AppCompatActivity {
             itema.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i=new Intent(mainactivity_3_message.this,mainactivity_5_linkman.class);
+                    Intent i=new Intent(mainactivity_3_message.this,mainactivity_6_my_meeting.class);
                     startActivity(i);
                     finish();
                 }
