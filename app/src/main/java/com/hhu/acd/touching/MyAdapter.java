@@ -48,7 +48,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
-
+    @Override
+    public long getItemId(int position) {
+        return position;
+    }
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据

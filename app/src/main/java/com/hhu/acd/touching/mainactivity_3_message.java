@@ -65,6 +65,7 @@ public class mainactivity_3_message extends AppCompatActivity {
     private void initData() {
       mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
       mAdapter = new MyAdapter(this,getData());
+      mAdapter.setHasStableIds(true);
     }
 
     private void initView() {
