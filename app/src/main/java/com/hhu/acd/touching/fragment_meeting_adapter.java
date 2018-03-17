@@ -19,11 +19,11 @@ import java.util.ArrayList;
  */
 
 public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meeting_adapter.ViewHolder> {
-    private fragment_meeting_adapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
     private ArrayList<meeting_data> mData;
     private Context context;
     private Resources resources;
-    public fragment_meeting_adapter(Context context,ArrayList<meeting_data> data) {
+    public fragment_meeting_adapter(Context context, ArrayList<meeting_data> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
@@ -33,21 +33,21 @@ public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meet
         this.mData = data;
         notifyDataSetChanged();
     }
-    public void setOnItemClickListener(fragment_meeting_adapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
 
     @Override
-    public fragment_meeting_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 实例化展示的view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_meeting_brief_message_item, parent, false);
         // 实例化viewholder
-        fragment_meeting_adapter.ViewHolder viewHolder = new fragment_meeting_adapter.ViewHolder(v);
+        ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final fragment_meeting_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
         Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
         holder.meeting_image.addImage(bitmap);

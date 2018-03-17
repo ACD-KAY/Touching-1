@@ -23,7 +23,6 @@
         android:layout_alignEnd="@+id/resetpwd_edit_pwd_new" />
 
     <!--
-
     <EditText android:id="@+id/edt_operator_name" style="@style/syncEditText"
         android:hint="@string/hint_operator_name" />
     <ImageView android:id="@+id/syncOperatorImg" style="@style/syncImageView"

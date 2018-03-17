@@ -7,7 +7,7 @@ package com.hhu.acd.touching;
 public class notes_data {
     private String notestime;
     private String notescontent;
-    protected notes_data(String notestime,String notescontent){
+    protected notes_data(String notestime, String notescontent){
         this.notestime=notestime;
         this.notescontent=notescontent;
 

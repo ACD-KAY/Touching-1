@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_votation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+
+    android:background="#FFFFFF">
+
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:contentInsetStart="0dp">
+        <Button
+            android:id="@+id/B_before"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_navigate_before_white_24dp"
+            android:background="@null"
+            android:text="返回"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+
+
+            android:gravity="center_vertical"
+            />
+        <TextView
+            android:id="@+id/list"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="消息列表"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/B_release"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="发布"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="right"
+            android:layout_marginRight="20dp"/>
+
+
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:id="@+id/scrollV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:background="#E3E3E3">
+
+        <RelativeLayout
+            android:id="@+id/RL"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true">
+
+            <EditText
+                android:id="@+id/V_theme"
+                android:layout_width="fill_parent"
+                android:layout_height="120dp"
+                android:hint="输入投票主题,2-100字"
+                android:maxLength="100"
+                android:gravity="left"
+                android:paddingLeft="15dp"
+                android:paddingTop="5dp"
+                android:background="#FFFFFF" />
+
+            <ListView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/votation"
+                android:layout_below="@id/V_theme"
+                android:layout_marginTop="10dp"/>
+
+
+            <Button
+                android:id="@+id/B_add"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="添加选项"
+                android:textSize="20sp"
+                android:drawableLeft="@drawable/ic_add_circle_blue_700_24dp"
+                android:gravity="center_vertical"
+                android:drawablePadding="10dp"
+                android:paddingLeft="20dp"
+                android:layout_below="@id/votation"
+                android:background="#FFFFFF"/>
+            <TextView
+                android:id="@+id/vote"
+                android:layout_width="wrap_content"
+                android:layout_height="50dp"
+                android:text="最多10项，每项最多50字"
+                android:paddingTop="8dp"
+                android:paddingLeft="30dp"
+                android:layout_below="@+id/B_add"/>
+
+            <TextView
+                android:id="@+id/Vtype"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="投票类型"
+                android:textSize="20sp"
+                android:background="#FFFFFF"
+                android:layout_below="@+id/vote"
+                android:paddingTop="10dp"
+                android:paddingLeft="50dp"
+                android:layout_marginTop="10dp"/>
+
+            <Spinner
+                android:id="@+id/S_Vtype"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Vtype"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="150dp" />
+
+            <TextView
+                android:id="@+id/Deadline"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="结束日期"
+                android:textSize="20sp"
+                android:layout_below="@+id/Vtype"
+                android:background="#FFFFFF"
+                android:paddingTop="10dp"
+                android:paddingLeft="50dp"
+                android:layout_marginTop="1dp"/>
+            <TextView
+                android:id="@+id/display"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/S_Vtype"
+                android:text="默认时间显示"
+                android:textSize="20sp"
+                android:layout_alignBaseline="@+id/Deadline"
+                android:layout_marginLeft="200dp"/>
+
+            <TextView
+                android:id="@+id/Remind"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="提醒"
+                android:textSize="20sp"
+                android:layout_below="@+id/Deadline"
+                android:background="#FFFFFF"
+                android:paddingTop="10dp"
+                android:paddingLeft="50dp"
+                android:layout_marginTop="1dp"/>
+
+            <Spinner
+                android:id="@+id/S_Remind"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@+id/Remind"
+                android:layout_marginTop="10dp"
+                android:layout_marginLeft="150dp" />
+
+        </RelativeLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

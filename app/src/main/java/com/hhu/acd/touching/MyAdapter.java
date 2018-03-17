@@ -1,7 +1,6 @@
 package com.hhu.acd.touching;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -11,10 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-
 import com.stfalcon.multiimageview.MultiImageView;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 /**
@@ -22,11 +19,11 @@ import java.util.ArrayList;
  */
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
-    private MyAdapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
     private ArrayList<message_data> mData;
     private Context context;
     private Resources resources;
-    public MyAdapter(Context context,ArrayList<message_data> data) {
+    public MyAdapter(Context context, ArrayList<message_data> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
@@ -36,7 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
         this.mData = data;
         notifyDataSetChanged();
     }
-    public void setOnItemClickListener(MyAdapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
 
@@ -55,7 +52,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
-        Bitmap bitmap=BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
+        Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
         holder.chat_item_portrait.addImage(bitmap);
         holder.chat_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
         holder.name.setText(mData.get(position).getName());

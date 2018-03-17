@@ -1,19 +1,18 @@
 package com.hhu.acd.touching;
 
-import android.os.Bundle;
+import android.content.Intent;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.ImageButton;
 
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by liziming on 18-1-25.
- */
+public class Activity_06 extends AppCompatActivity {
 
-public class mainactivity_6_my_meeting extends AppCompatActivity {
+    private ImageButton btn;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private String[] mTitles = new String[]{"我参加的", "我发布的","我收藏的", "我的笔记"};
@@ -24,6 +23,27 @@ public class mainactivity_6_my_meeting extends AppCompatActivity {
 
         initView(); // 初始化控件
         initViewPager(); // 初始化ViewPager
+
+
+        /**返回会议列表界面*/
+        btn=(ImageButton)findViewById(R.id.mymeeting_back);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_06.this, Activity_04.class);
+                startActivity(it);
+            }
+        });
+
+        /**跳转到他人申请的会议*/
+        btn2=(ImageButton)findViewById(R.id.new_meeting_request);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_06.this, Activity_07.class);
+                startActivity(it);
+            }
+        });
     }
     /**
      * 初始化控件

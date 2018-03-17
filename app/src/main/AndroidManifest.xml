@@ -8,19 +8,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".mainactivity_3_message">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".mainactivity_5_linkman">
-
-        </activity>
-        <activity android:name=".mainactivity_6_my_meeting">
-
-        </activity>
         <activity
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />

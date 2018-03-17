@@ -1,6 +1,5 @@
 package com.hhu.acd.touching;
 
-
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -17,6 +16,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
@@ -25,8 +25,11 @@ import android.widget.Toast;
 
 import com.stfalcon.multiimageview.MultiImageView;
 
-public class mainactivity_3_message extends AppCompatActivity {
+public class Activity_03 extends AppCompatActivity {
 
+
+
+    private ImageButton btn,btn1,btn2,btn3;
 
     private RecyclerView mRecyclerView;
 
@@ -59,13 +62,54 @@ public class mainactivity_3_message extends AppCompatActivity {
             }
         });
 
-    getSupportActionBar().setDisplayShowTitleEnabled(false);
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
+
+        /** 跳转到添加好友界面*/
+        btn=(ImageButton)findViewById(R.id.addfriends);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_03.this, Activity_11.class);
+                startActivity(it);
+            }
+        });
+
+        /** 跳转到消息界面*/
+        btn1=(ImageButton)findViewById(R.id.message);
+        btn1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_03.this, Activity_13.class);
+                startActivity(it);
+            }
+        });
+
+        /** 跳转到会议界面*/
+        btn2=(ImageButton)findViewById(R.id.meeting);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_03.this, Activity_04.class);
+                startActivity(it);
+            }
+        });
+
+        /** 跳转到好友列表界面*/
+        btn3=(ImageButton)findViewById(R.id.myfriends);
+        btn3.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_03.this, Activity_05.class);
+                startActivity(it);
+            }
+        });
     }
 
+
     private void initData() {
-      mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-      mAdapter = new MyAdapter(this,getData());
-      mAdapter.setHasStableIds(true);
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mAdapter = new MyAdapter(this,getData());
+        mAdapter.setHasStableIds(true);
     }
 
     private void initView() {
@@ -82,7 +126,7 @@ public class mainactivity_3_message extends AppCompatActivity {
 
             //@Override
             //public void onItemLongClick(View view, int position) {
-                //Toast.makeText(MDRvActivity.this,"long click " + position + " item", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(MDRvActivity.this,"long click " + position + " item", Toast.LENGTH_SHORT).show();
             //}
         });
 
@@ -142,4 +186,5 @@ public class mainactivity_3_message extends AppCompatActivity {
         finish();
     }
 
-    }
+}
+

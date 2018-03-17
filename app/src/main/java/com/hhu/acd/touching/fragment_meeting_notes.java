@@ -3,7 +3,6 @@ package com.hhu.acd.touching;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,7 +26,7 @@ public class fragment_meeting_notes extends Fragment {
     private RecyclerView.LayoutManager mLayoutManager;
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,  Bundle savedInstanceState) {
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.mContext=getActivity();
         view=inflater.inflate(R.layout.fragment_meeting_brief_message, null);
         initData();

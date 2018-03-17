@@ -36,7 +36,7 @@ dependencies {
     compile 'com.github.stfalcon:multiimageview:0.1'
     compile 'com.google.code.gson:gson:2.8.0'
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
-    compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
+    //compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
     compile 'com.github.bumptech.glide:glide:3.8.0'
 
 

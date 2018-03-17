@@ -2,16 +2,11 @@ package com.hhu.acd.touching;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-
-import com.stfalcon.multiimageview.MultiImageView;
 
 import java.util.ArrayList;
 
@@ -20,11 +15,11 @@ import java.util.ArrayList;
  */
 
 public class fragment_meeting_notes_adapter extends RecyclerView.Adapter<fragment_meeting_notes_adapter.ViewHolder> {
-    private fragment_meeting_notes_adapter.OnItemClickListener onItemClickListener;
+    private OnItemClickListener onItemClickListener;
     private ArrayList<notes_data> mData;
     private Context context;
     private Resources resources;
-    public fragment_meeting_notes_adapter(Context context,ArrayList<notes_data> data) {
+    public fragment_meeting_notes_adapter(Context context, ArrayList<notes_data> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
@@ -34,21 +29,21 @@ public class fragment_meeting_notes_adapter extends RecyclerView.Adapter<fragmen
         this.mData = data;
         notifyDataSetChanged();
     }
-    public void setOnItemClickListener(fragment_meeting_notes_adapter.OnItemClickListener listener) {
+    public void setOnItemClickListener(OnItemClickListener listener) {
         this.onItemClickListener = listener;
     }
 
     @Override
-    public fragment_meeting_notes_adapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 实例化展示的view
         View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.fragment_meeting_notes_item, parent, false);
         // 实例化viewholder
-        fragment_meeting_notes_adapter.ViewHolder viewHolder = new fragment_meeting_notes_adapter.ViewHolder(v);
+        ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
     }
 
     @Override
-    public void onBindViewHolder(final fragment_meeting_notes_adapter.ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
         /*Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
         holder.meeting_image.addImage(bitmap);

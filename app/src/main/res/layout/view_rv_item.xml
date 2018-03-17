@@ -48,41 +48,41 @@
 
 
 
-                <com.stfalcon.multiimageview.MultiImageView
-                    android:id="@+id/chat_item_portrait"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:layout_marginLeft="6dp"
-                    android:layout_marginRight="6dp"
-                    android:scaleType="centerCrop"
+            <com.stfalcon.multiimageview.MultiImageView
+                android:id="@+id/chat_item_portrait"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginRight="6dp"
+                android:scaleType="centerCrop"
 
 
-                    />
-                <FrameLayout
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_weight="1"
-                    android:layout_marginLeft="5dp">
-                    <TextView
-                        android:id="@+id/friend_name"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center"
+                />
+            <FrameLayout
+                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="5dp">
+                <TextView
+                    android:id="@+id/friend_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
 
-                        android:textAppearance="?android:textAppearanceLarge"
-                        android:textColor="@color/primary_text"/>
-                    <TextView
-                        android:id="@+id/message_brief"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="bottom"
-                        android:layout_width="match_parent"
-                        android:textAppearance="?android:textAppearanceListItemSmall"
+                    android:textAppearance="?android:textAppearanceLarge"
+                    android:textColor="@color/primary_text"/>
+                <TextView
+                    android:id="@+id/message_brief"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:layout_width="match_parent"
+                    android:textAppearance="?android:textAppearanceListItemSmall"
 
-                        android:layout_marginBottom="3dp"
-                        android:gravity="center_vertical"
-                        android:singleLine="true"
-                        android:textColor="@color/secondary_text"/>
-                </FrameLayout>
+                    android:layout_marginBottom="3dp"
+                    android:gravity="center_vertical"
+                    android:singleLine="true"
+                    android:textColor="@color/secondary_text"/>
+            </FrameLayout>
 
         </LinearLayout>
         <LinearLayout

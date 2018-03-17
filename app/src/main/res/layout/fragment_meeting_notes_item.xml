@@ -25,3 +25,4 @@
         android:layout_below="@id/meeting_notes_time"
         android:id="@+id/meeting_notes_content"/>
 </RelativeLayout>
+

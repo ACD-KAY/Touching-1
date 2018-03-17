@@ -1,41 +1,27 @@
 package com.hhu.acd.touching;
 
-import android.accounts.NetworkErrorException;
-import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ExpandableListView;
-import android.widget.TextView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.stfalcon.multiimageview.MultiImageView;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.ref.WeakReference;
-import java.net.HttpURLConnection;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
-/**
- * Created by liziming on 18-1-25.
- */
+public class Activity_05 extends AppCompatActivity {
 
-public class mainactivity_5_linkman extends AppCompatActivity {
+    private ImageView btn;
+    private ImageButton btn2;
+
     private ExpandableListView listview;
     //private ArrayList<linkman_group> list = new ArrayList<linkman_group>();
     int[] img = new int[6];
@@ -61,6 +47,27 @@ public class mainactivity_5_linkman extends AppCompatActivity {
         my_portrait=findViewById(R.id.my_head_portrait);
         my_portrait.addImage(BitmapFactory.decodeResource(getResources(),R.drawable.bussiness_man));
         my_portrait.setShape(MultiImageView.Shape.CIRCLE);
+
+
+        /**跳转到个人信息界面*/
+        btn=(ImageButton)findViewById(R.id.my_head_portrait);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_05.this, Activity_12.class);
+                startActivity(it);
+            }
+        });
+
+        /**跳转到添加好友界面*/
+        btn2=(ImageButton)findViewById(R.id.addfriends);
+        btn2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent it = new Intent(Activity_05.this, Activity_14.class);
+                startActivity(it);
+            }
+        });
     }
     /*private void initData() {
         for (int i = 0; i < img.length; i++) {
@@ -199,18 +206,18 @@ public class mainactivity_5_linkman extends AppCompatActivity {
             Log.w("WangJ", "task onPostExecute()");
             if (s!=null){
                 list=(gson.fromJson(s,mylinkman.class).getlist());
-               // adapter.notifyDataSetChanged();
+                // adapter.notifyDataSetChanged();
                 adapter = new linkman_adapter(context,list);
 
                 listview.setAdapter(adapter);
                 listview.setOnChildClickListener(new ExpandableListView.OnChildClickListener() {
-                @Override
-                public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
-                    Toast.makeText(context,list.get(i).getChild(i1).getNickName(), Toast.LENGTH_SHORT).show();
+                    @Override
+                    public boolean onChildClick(ExpandableListView expandableListView, View view, int i, int i1, long l) {
+                        Toast.makeText(context,list.get(i).getChild(i1).getNickName(), Toast.LENGTH_SHORT).show();
 
-                    return true;
-                }
-            });}
+                        return true;
+                    }
+                });}
             else {
                 list.add(new linkman_group(""));
                 adapter = new linkman_adapter(context,list);

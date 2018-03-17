@@ -15,7 +15,7 @@ import java.util.List;
 public class my_meeting_fragmentpageradapter extends FragmentPagerAdapter {
     private Context context;
     private List<Fragment> mFragmentList;
-    protected my_meeting_fragmentpageradapter( FragmentManager fm) {
+    protected my_meeting_fragmentpageradapter(FragmentManager fm) {
 
         super(fm);
         //this.context=context;

@@ -10,7 +10,7 @@ public class meeting_data {
     private String meeting_time;
     private String meeting_place;
     private int user_id;
-    public meeting_data(int imgurl,String meeting_name,String meeting_time,String meeting_place,int user_id){
+    public meeting_data(int imgurl, String meeting_name, String meeting_time, String meeting_place, int user_id){
         this.imgurl=imgurl;
         this.meeting_name=meeting_name;
         this.meeting_time=meeting_time;

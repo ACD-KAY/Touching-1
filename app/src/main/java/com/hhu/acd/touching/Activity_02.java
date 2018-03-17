@@ -3,6 +3,7 @@ package com.hhu.acd.touching;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.Snackbar;
@@ -37,7 +38,7 @@ import static android.Manifest.permission.READ_CONTACTS;
 /**
  * A login screen that offers login via email/password.
  */
-public class LoginActivity_2 extends AppCompatActivity implements LoaderCallbacks<Cursor> {
+public class Activity_02 extends AppCompatActivity implements LoaderCallbacks<Cursor> {
 
     /**
      * Id to identity READ_CONTACTS permission request.
@@ -65,7 +66,7 @@ public class LoginActivity_2 extends AppCompatActivity implements LoaderCallback
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login_2_1);
+        setContentView(R.layout.activity_02);
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
         populateAutoComplete();
@@ -187,6 +188,8 @@ public class LoginActivity_2 extends AppCompatActivity implements LoaderCallback
             showProgress(true);
             mAuthTask = new UserLoginTask(email, password);
             mAuthTask.execute((Void) null);
+            Intent intent = new Intent(Activity_02.this,Activity_02_2.class);
+            startActivity(intent);
         }
     }
 
@@ -273,7 +276,7 @@ public class LoginActivity_2 extends AppCompatActivity implements LoaderCallback
     private void addEmailsToAutoComplete(List<String> emailAddressCollection) {
         //Create adapter to tell the AutoCompleteTextView what to show in its dropdown list.
         ArrayAdapter<String> adapter =
-                new ArrayAdapter<>(LoginActivity_2.this,
+                new ArrayAdapter<>(Activity_02.this,
                         android.R.layout.simple_dropdown_item_1line, emailAddressCollection);
 
         mEmailView.setAdapter(adapter);
@@ -347,4 +350,3 @@ public class LoginActivity_2 extends AppCompatActivity implements LoaderCallback
         }
     }
 }
-

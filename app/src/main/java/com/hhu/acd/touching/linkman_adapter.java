@@ -18,7 +18,7 @@ import java.util.List;
 public class linkman_adapter extends BaseExpandableListAdapter {
     Context context;
     List<linkman_group> list;
-    public linkman_adapter(Context context,List<linkman_group> linkman_groups){
+    public linkman_adapter(Context context, List<linkman_group> linkman_groups){
         this.context=context;
         this.list=linkman_groups;
     }
@@ -123,7 +123,7 @@ public class linkman_adapter extends BaseExpandableListAdapter {
         }
     }
     static class ChildHolder {
-        com.stfalcon.multiimageview.MultiImageView img;
+        MultiImageView img;
         TextView nickName;
 
 

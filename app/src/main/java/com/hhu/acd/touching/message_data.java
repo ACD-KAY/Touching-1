@@ -8,7 +8,7 @@ public class message_data {
     private String name;
     private String massage;
     private int user_id;
-    public message_data(int imgurl,String name,String massage,int user_id){
+    public message_data(int imgurl, String name, String massage, int user_id){
         this.imgurl=imgurl;
         this.name=name;
         this.massage=massage;
