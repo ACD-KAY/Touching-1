@@ -31,7 +31,7 @@ public class Activity_04 extends AppCompatActivity {
 
     /**跳转到消息列表界面*/
     btn =(Button)findViewById(R.id.message);
-        btn.setOnClickListener(new View.OnClickListener() {
+    btn.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             Intent it = new Intent(Activity_04.this, Activity_03.class);
