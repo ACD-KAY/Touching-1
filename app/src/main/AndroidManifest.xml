@@ -87,14 +87,14 @@
             android:authorities="com.netease.nim.demo.ipc.provider"
             android:exported="false"
             android:process=":core" />
-        <activity android:name=".Activity_03">
+        <activity android:name=".Activity_01">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activity_01" />
+        <activity android:name=".Activity_03" />
         <activity android:name=".Activity_04" />
         <activity android:name=".Activity_05" />
         <activity android:name=".Activity_06" />

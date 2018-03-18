@@ -26,8 +26,8 @@ public class Activity_12_2 extends AppCompatActivity {
         btn1.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(PersonInfor2Activity.this, MainActivity.class);
-                startActivity(it);
+                //Intent it = new Intent(PersonInfor2Activity.this, MainActivity.class);
+                //startActivity(it);
             }
         });
 
@@ -36,8 +36,8 @@ public class Activity_12_2 extends AppCompatActivity {
         btn2.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Activity_12_2.this, MainActivity.class);
-                startActivity(it);
+                //Intent it = new Intent(Activity_12_2.this, MainActivity.class);
+                //startActivity(it);
             }
         });
 
@@ -47,7 +47,7 @@ public class Activity_12_2 extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Activity_12_2.this,Activity_13.class);
-                startActivity(it);
+                //startActivity(it);
             }
         });
 
@@ -56,8 +56,8 @@ public class Activity_12_2 extends AppCompatActivity {
         btn4.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(PersonInfor2Activity.this, MainActivity.class);
-                startActivity(it);
+                //Intent it = new Intent(PersonInfor2Activity.this, MainActivity.class);
+                //startActivity(it);
             }
         });
     }

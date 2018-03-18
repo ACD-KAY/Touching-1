@@ -1,5 +1,6 @@
 package com.hhu.acd.touching;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.app.AppCompatActivity;
@@ -14,7 +15,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 import android.app.ActionBar;
-import android.widget.Toolbar;
+
 
 
 public class Activity_15 extends AppCompatActivity {
@@ -25,12 +26,12 @@ public class Activity_15 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_votation);
+        setContentView(R.layout.activity_15);
 
 
 
-        spinner();
-        spinner2();
+        //spinner();
+        //spinner2();
 
         btn1=(TextView)findViewById(R.id.B_release);
         btn1.setOnClickListener(new View.OnClickListener() {
@@ -52,15 +53,15 @@ public class Activity_15 extends AppCompatActivity {
 
 
         /**标题栏设置*/
-        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
+        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
     }
 
     /** 投票类型选择*/
-    private void spinner() {
+    /*private void spinner() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Vtype);
-        String[] items = getResources().getStringArray(R.array.S_votationtype);
+        String[] items = getResources().getStringArray(R.array.S_votati=ontype);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -68,17 +69,17 @@ public class Activity_15 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String[] select = getResources().getStringArray(R.array.S_votationtype);
-                Toast.makeText(VotationActivity.this, "你选择了"+select[i], Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_15.this, "你选择了"+select[i], Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }
+    }*/
 
     /**提醒时间选择*/
-    private void spinner2() {
+   /* private void spinner2() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Remind);
         String[] items = getResources().getStringArray(R.array.S_remind);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
@@ -88,13 +89,13 @@ public class Activity_15 extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String[] select = getResources().getStringArray(R.array.S_remind);
-                Toast.makeText(VotationActivity.this, "你选择了"+select[i], Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_15.this, "你选择了"+select[i], Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }
+    }*/
 
 }

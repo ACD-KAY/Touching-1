@@ -16,6 +16,11 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    packagingOptions {
+        pickFirst 'lib/armeabi-v7a/libne_audio.so'
+        pickFirst 'lib/assets/nim_keystore'
+        //pickFirst 'lib/x86/libassmidi.so'
+    }
     useLibrary 'org.apache.http.legacy'
 }
 

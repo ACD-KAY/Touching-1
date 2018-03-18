@@ -20,9 +20,9 @@ public class Activity_14 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_14);
-        ib1= (ImageButton) findViewById(R.id.ib);
+        //ib1= (ImageButton) findViewById(R.id.ib);
         ib2= (ImageButton) findViewById(R.id.ib2);
-        subject=(TextView) findViewById(R.id.tv);
+        //subject=(TextView) findViewById(R.id.tv);
         subject.setTextColor(Color.BLUE);
     }
 }

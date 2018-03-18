@@ -28,7 +28,7 @@ public class Activity_13 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_13);
         initMsgs();//初始化
         inputText = (EditText) findViewById(R.id.input_text);
         send = (Button) findViewById((R.id.send));

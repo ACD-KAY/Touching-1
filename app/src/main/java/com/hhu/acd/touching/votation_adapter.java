@@ -97,7 +97,7 @@ public class votation_adapter extends BaseAdapter {
 
         vh.edixt.addTextChangedListener(watcher);
         vh.edixt.setTag(watcher);
-        vh.button.setImageResource(R.drawable.ic_add_circle_blue_700_36dp);
+        vh.button.setImageResource(R.drawable.ic_add_circle_blue_700_24dp);
         if(mData.get(position).getVisible()==true) vh.button.setVisibility(View.VISIBLE);
         else vh.button.setVisibility(View.INVISIBLE);
         vh.edixt.setHint("选项"+position);

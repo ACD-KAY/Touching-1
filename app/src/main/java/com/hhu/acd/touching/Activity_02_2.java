@@ -64,11 +64,11 @@ public class Activity_02_2 extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.register_btn_sure:                       //确认按钮的监听事件
                     register_check();
-                    Intent intent_Register_to_Login = new Intent(Activity_02_2.this,FirstActivity.class) ;    //切换User Activity至Login Activity
+                    Intent intent_Register_to_Login = new Intent(Activity_02_2.this,Activity_01.class) ;    //切换User Activity至Login Activity
                     startActivity(intent_Register_to_Login);
                     break;
                 case R.id.register_btn_cancel:                     //取消按钮的监听事件,由注册界面返回登录界面
-                    Intent intent_Register_to_Login1 = new Intent(Activity_02_2.this,SecondActivity.class) ;    //切换User Activity至Login Activity
+                    Intent intent_Register_to_Login1 = new Intent(Activity_02_2.this,Activity_02.class) ;    //切换User Activity至Login Activity
                     startActivity(intent_Register_to_Login1);
 
                     break;
