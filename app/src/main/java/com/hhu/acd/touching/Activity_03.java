@@ -44,7 +44,7 @@ public class Activity_03 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainactivity_3_messagelist);
+        setContentView(R.layout.activity_03);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
@@ -121,7 +121,7 @@ public class Activity_03 extends AppCompatActivity {
         mAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
-                Toast.makeText(mainactivity_3_message.this,"click " + position + " item", Toast.LENGTH_SHORT).show();
+                Toast.makeText(Activity_03.this,"click " + position + " item", Toast.LENGTH_SHORT).show();
             }
 
             //@Override
@@ -157,7 +157,7 @@ public class Activity_03 extends AppCompatActivity {
             itema.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    Intent i=new Intent(mainactivity_3_message.this,mainactivity_6_my_meeting.class);
+                    Intent i=new Intent(Activity_03.this,Activity_06.class);
                     startActivity(i);
                     finish();
                 }
@@ -181,7 +181,7 @@ public class Activity_03 extends AppCompatActivity {
 
     }
     public void link_man(View view){
-        Intent i=new Intent(mainactivity_3_message.this,mainactivity_5_linkman.class);
+        Intent i=new Intent(Activity_03.this,Activity_05.class);
         startActivity(i);
         finish();
     }

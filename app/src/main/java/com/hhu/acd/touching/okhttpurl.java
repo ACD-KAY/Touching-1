@@ -6,6 +6,7 @@ package com.hhu.acd.touching;
 
 
 public class okhttpurl {
+    public  static String url_sendmsg="106.14.195.234//springmvc/";//发送验证短信
 
     
 }

@@ -2,6 +2,7 @@ package com.hhu.acd.touching;
 
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,13 +14,14 @@ import java.util.ArrayList;
 public class Activity_06 extends AppCompatActivity {
 
     private ImageButton btn;
+    private ImageButton btn2;
     private TabLayout mTabLayout;
     private ViewPager mViewPager;
     private String[] mTitles = new String[]{"我参加的", "我发布的","我收藏的", "我的笔记"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainactivity_6_my_meeting);
+        setContentView(R.layout.activity_06);
 
         initView(); // 初始化控件
         initViewPager(); // 初始化ViewPager

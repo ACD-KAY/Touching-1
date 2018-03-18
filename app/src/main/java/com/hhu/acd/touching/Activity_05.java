@@ -15,6 +15,9 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+import com.stfalcon.multiimageview.MultiImageView;
+
 import java.util.ArrayList;
 
 public class Activity_05 extends AppCompatActivity {
@@ -31,7 +34,7 @@ public class Activity_05 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.mainactivity_5_linkman);
+        setContentView(R.layout.activity_05);
         //initData();
         listview =  findViewById(R.id.linkman_expand_list);
         getlinkman();
