@@ -18,7 +18,7 @@ public class Activity_12_2 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_person_infor2);
+        setContentView(R.layout.activity_12);
 
 
         /**取消关注*/
