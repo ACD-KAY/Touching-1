@@ -212,7 +212,7 @@ public class Activity_02 extends AppCompatActivity  {
                     if (response.code() == 200) {
                         mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
 
-                        mHandler.obtainMessage(2,response.body().string()).sendToTarget();
+                        mHandler.obtainMessage(2,response.body().string().trim()).sendToTarget();
                         //identity = response.body().string();
                     } else
                         mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
