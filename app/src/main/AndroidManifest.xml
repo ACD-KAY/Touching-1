@@ -105,6 +105,7 @@
         <activity android:name=".Activity_11" />
         <activity android:name=".Activity_12" />
         <activity android:name=".Activity_13" />
+        <activity android:name=".Activity_02" />
         <activity android:name=".Activity_14" />
         <activity android:name=".Activity_15" />
         <activity android:name=".Activity_02_2" />

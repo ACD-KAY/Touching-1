@@ -8,21 +8,11 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.teamacd.demo.Activity_02">
+    tools:context="com.hhu.acd.touching.Activity_02">
 
-    <!-- Login progress -->
-    <ProgressBar
-        android:id="@+id/login_progress"
-        style="?android:attr/progressBarStyleLarge"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
-        android:visibility="gone" />
 
-    <ScrollView
-        android:id="@+id/login_form"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+
+
 
         <LinearLayout
             android:id="@+id/email_login_form"
@@ -30,12 +20,9 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <android.support.design.widget.TextInputLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <AutoCompleteTextView
-                    android:id="@+id/email"
+            <EditText
+                    android:id="@+id/phonenumber"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:hint="输入手机号码"
@@ -43,7 +30,7 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-            </android.support.design.widget.TextInputLayout>
+
 
             <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
                 android:orientation="horizontal"
@@ -51,7 +38,8 @@
                 android:layout_height="wrap_content">
 
                 <EditText
-                    android:id="@+id/password"
+                    android:id="@+id/identity_code"
+                    android:layout_marginTop="6dp"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
@@ -63,34 +51,29 @@
                     android:maxLines="1"
                     android:singleLine="true" />
 
-                <Button
-                    android:id="@+id/button1"
+                <com.hhu.acd.touching.TimeButton
+                    android:id="@+id/send_msg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="发送验证码"
+                    android:background="@drawable/timebutton"
+
 
                     />
 
             </LinearLayout>
 
-            <Button
+            <CheckBox
                 android:id="@+id/email_sign_in_button"
                 style="?android:textAppearanceSmall"
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:text="同意协议"
-                android:textStyle="bold" />
+                android:checked="true"
+                android:text="同意服务条款"
+                android:layout_below="@+id/B_login"
+                android:layout_alignStart="@id/B_login"/>
 
-            <TextView
-                android:id="@+id/textxieyi"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:text="已阅读并同意以下协议"
-                android:textSize="14sp"
-                android:textColor="#CDC5BF"
-                />
+
 
         </LinearLayout>
-    </ScrollView>
+
 </LinearLayout>

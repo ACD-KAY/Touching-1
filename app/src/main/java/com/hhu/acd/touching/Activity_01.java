@@ -45,7 +45,7 @@ public class Activity_01 extends AppCompatActivity {
                     @Override
                     public void onFailed(int code) {
 
-                        mHandler.obtainMessage(1,"登录失败").sendToTarget();
+                        mHandler.obtainMessage(1,"登录失败,请检查帐号或密码").sendToTarget();
 
                     }
 
@@ -108,7 +108,7 @@ public class Activity_01 extends AppCompatActivity {
             }
             switch (msg.what) {
                 case 1:
-                    Toast.makeText(activity, "下载失败", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, (String)msg.obj, Toast.LENGTH_SHORT).show();
                     break;
                 /*case 2:
                     Toast.makeText(activity, "下载成功", Toast.LENGTH_SHORT).show();

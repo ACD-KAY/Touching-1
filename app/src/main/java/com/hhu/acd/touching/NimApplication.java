@@ -7,6 +7,10 @@ import android.graphics.Color;
 import android.os.Environment;
 import android.text.TextUtils;
 
+import com.franmontiel.persistentcookiejar.ClearableCookieJar;
+import com.franmontiel.persistentcookiejar.PersistentCookieJar;
+import com.franmontiel.persistentcookiejar.cache.SetCookieCache;
+import com.franmontiel.persistentcookiejar.persistence.SharedPrefsCookiePersistor;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
 import com.netease.nimlib.sdk.StatusBarNotificationConfig;
@@ -15,8 +19,12 @@ import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
 import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
 import com.netease.nimlib.sdk.uinfo.model.UserInfo;
 import com.netease.nimlib.sdk.util.NIMUtil;
+import com.tsy.sdk.myokhttp.MyOkHttp;
 
 import java.io.IOException;
+import java.util.Map;
+
+import okhttp3.OkHttpClient;
 
 
 /**
@@ -24,13 +32,22 @@ import java.io.IOException;
  */
 
 public class NimApplication extends Application {
+    public static Map<String, Long> map;
+    private static NimApplication mInstance;
+    public MyOkHttp mMyOkhttp ;
     @Override
     public void onCreate() {
         // ... your codes
         super.onCreate();
+        mInstance = this;
         // SDK初始化（启动后台服务，若已经存在用户登录信息， SDK 将完成自动登录）
         NIMClient.init(this, loginInfo(), options());
-
+        ClearableCookieJar cookieJar =
+                new PersistentCookieJar(new SetCookieCache(), new SharedPrefsCookiePersistor(getApplicationContext()));
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .cookieJar(cookieJar)
+                .build();
+        mMyOkhttp  = new MyOkHttp(okHttpClient);
         // ... your codes
         if (NIMUtil.isMainProcess(this)) {
             // 注意：以下操作必须在主进程中进行
@@ -67,5 +84,12 @@ public class NimApplication extends Application {
 
 
         return storageRootPath;
+    }
+    public static synchronized NimApplication getInstance() {
+        return mInstance;
+    }
+
+    public MyOkHttp getMyOkHttp() {
+        return mMyOkhttp;
     }
 }
