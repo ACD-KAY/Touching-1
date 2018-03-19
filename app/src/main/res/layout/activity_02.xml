@@ -66,13 +66,14 @@
                     android:imeActionId="6"
                     android:imeActionLabel="@string/action_sign_in_short"
                     android:imeOptions="actionUnspecified"
-                    android:inputType="numberPassword"
+
                     android:maxLines="1"
                     android:singleLine="true"
-                    android:maxLength="6"/>
+                    />
 
-                <com.hhu.acd.touching.TimeButton
+                <Button
                     android:id="@+id/send_msg"
+                    android:text="发送短信"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/timebutton"

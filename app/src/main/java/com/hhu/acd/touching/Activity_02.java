@@ -17,9 +17,17 @@ import com.tsy.sdk.myokhttp.MyOkHttp;
 import com.tsy.sdk.myokhttp.response.GsonResponseHandler;
 import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
 
+import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 import java.util.Map;
+
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.FormBody;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 import static android.Manifest.permission.READ_CONTACTS;
 
@@ -30,16 +38,17 @@ public class Activity_02 extends AppCompatActivity  {
 
 
     // UI references.
-    private TimeButton v;
+
     private EditText phonenumber;
     private EditText identity_code;
-    private TimeButton send_msg;
+    //private TimeButton send_msg;
+    private Button send_msg;
     private Button check;
-    private Gson gson;
+    //private Gson gson;
     private MyOkHttp mMyOkhttp;
-    String identity=null;
-    private final Activity_02.MyHandler mHandler = new Activity_02.MyHandler(this);
-
+    public String identity;
+   // private final Activity_02.MyHandler mHandler = new Activity_02.MyHandler(this);
+    private MyHandler mHandler=new MyHandler(this);
 
 
     @Override
@@ -49,12 +58,18 @@ public class Activity_02 extends AppCompatActivity  {
         mMyOkhttp = NimApplication.getInstance().getMyOkHttp();
         phonenumber=findViewById(R.id.phonenumber);
         identity_code=findViewById(R.id.identity_code);
+        send_msg =  findViewById(R.id.send_msg);
+        //send_msg.setTextAfter("秒后重新获取").setTextBefore("获取验证码").setLenght(15 * 1000);
 
 
         /*发送验证码*/
         send_msg=findViewById(R.id.send_msg);
         send_msg.setOnClickListener(new OnClickListener() {
             @Override
+            public void onClick(View v) {
+                getDataAsync(phonenumber.getText().toString());
+            }
+            /*@Override
             public void onClick(View v) {
                 if(isPhoneValid(phonenumber.getText().toString())) {
                     Map<String, String> params = new HashMap<>();
@@ -83,9 +98,9 @@ public class Activity_02 extends AppCompatActivity  {
                                     else
                                     {
                                         mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
-                                    }*/
+                                    }
                                     if (statusCode==200)
-                                    {mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
+                                    {   mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
                                         identity=(String)response;
                                     }
                                     else
@@ -93,7 +108,7 @@ public class Activity_02 extends AppCompatActivity  {
                                 }
                             });
                 }
-            }
+            }*/
         });
 
 
@@ -102,10 +117,18 @@ public class Activity_02 extends AppCompatActivity  {
         check.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(identity_code.getText().toString()==identity)
-                    mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
+                if(identity_code.getText().toString().equals(identity))
+                {   mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
+                    Intent it = new Intent(Activity_02.this, Activity_02_2.class);
+                    it.putExtra("id",phonenumber.getText().toString());
+                    startActivity(it);
+                    finish();
+                }
                 else
-                    mHandler.obtainMessage(1, "您所输入的验证码错误").sendToTarget();
+                {mHandler.obtainMessage(1, "您所输入的验证码错误").sendToTarget();
+                 mHandler.obtainMessage(1, identity_code.getText().toString()).sendToTarget();
+                }
+
             }
         });
 
@@ -149,7 +172,11 @@ public class Activity_02 extends AppCompatActivity  {
             }
             switch (msg.what) {
                 case 1:
-                    Toast.makeText(activity, (String)msg.obj, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(activity, (String)msg.obj, Toast.LENGTH_LONG).show();
+                    break;
+                case 2:
+                    activity.identity=(String)msg.obj;
+                    Toast.makeText(activity, activity.identity, Toast.LENGTH_LONG).show();
                     break;
                 /*case 2:
                     Toast.makeText(activity, "下载成功", Toast.LENGTH_SHORT).show();
@@ -162,6 +189,40 @@ public class Activity_02 extends AppCompatActivity  {
                     break;
             }
         }
+    }
+    private void getDataAsync(String PHONE) {
+        OkHttpClient client = new OkHttpClient();
+        FormBody.Builder formBody = new FormBody.Builder();//创建表单请求体
+        formBody.add("id",PHONE);//传递键值对参数
+        Request request = new Request.Builder()
+                .url(okhttpurl.url_sendmsg)
+                .post(formBody.build())
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                mHandler.obtainMessage(1, "可能网络出了点问题").sendToTarget();
+            }
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {//回调的方法执行在子线程。
+                    /*Log.d("kwwl","获取数据成功了");
+                    Log.d("kwwl","response.code()=="+response.code());
+                    Log.d("kwwl","response.body().string()=="+response.body().string());*/
+                    if (response.code() == 200) {
+                        mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
+
+                        mHandler.obtainMessage(2,response.body().string()).sendToTarget();
+                        //identity = response.body().string();
+                    } else
+                        mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
+
+
+                }
+                else
+                    mHandler.obtainMessage(1, "可能网络出了点问题").sendToTarget();
+            }
+        });
     }
 
 }
