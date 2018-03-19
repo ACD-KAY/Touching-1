@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -29,12 +30,18 @@ public class Activity_02 extends AppCompatActivity  {
 
 
     // UI references.
+    private TimeButton v;
     private EditText phonenumber;
     private EditText identity_code;
     private TimeButton send_msg;
+    private Button check;
     private Gson gson;
     private MyOkHttp mMyOkhttp;
+    String identity=null;
     private final Activity_02.MyHandler mHandler = new Activity_02.MyHandler(this);
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -42,6 +49,9 @@ public class Activity_02 extends AppCompatActivity  {
         mMyOkhttp = NimApplication.getInstance().getMyOkHttp();
         phonenumber=findViewById(R.id.phonenumber);
         identity_code=findViewById(R.id.identity_code);
+
+
+        /*发送验证码*/
         send_msg=findViewById(R.id.send_msg);
         send_msg.setOnClickListener(new OnClickListener() {
             @Override
@@ -59,13 +69,13 @@ public class Activity_02 extends AppCompatActivity  {
 
                                 @Override
                                 public void onFailure(int statusCode, String error_msg) {
-
+                                    mHandler.obtainMessage(1, "可能网络出了点问题").sendToTarget();
                                 }
 
                                 @Override
                                 public void onSuccess(int statusCode, Object response) {
-                                    String identity=identity_code.getText().toString();
-                                    if(identity==(String)response) {
+                                    //identity=identity_code.getText().toString();
+                                    /*if(identity==(String)response) {
                                         mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
                                         Intent it = new Intent(Activity_02.this, Activity_03.class);
                                         startActivity(it);
@@ -73,14 +83,31 @@ public class Activity_02 extends AppCompatActivity  {
                                     else
                                     {
                                         mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
+                                    }*/
+                                    if (statusCode==200)
+                                    {mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
+                                        identity=(String)response;
                                     }
-
+                                    else
+                                        mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
                                 }
                             });
                 }
             }
         });
 
+
+        /*验证*/
+        check=findViewById(R.id.checkcode);
+        check.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(identity_code.getText().toString()==identity)
+                    mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
+                else
+                    mHandler.obtainMessage(1, "您所输入的验证码错误").sendToTarget();
+            }
+        });
 
     }
 
