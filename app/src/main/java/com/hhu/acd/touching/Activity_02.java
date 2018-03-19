@@ -70,6 +70,10 @@ public class Activity_02 extends AppCompatActivity  {
                                         Intent it = new Intent(Activity_02.this, Activity_03.class);
                                         startActivity(it);
                                     }
+                                    else
+                                    {
+                                        mHandler.obtainMessage(1, "验证通过！！").sendToTarget();
+                                    }
 
                                 }
                             });
