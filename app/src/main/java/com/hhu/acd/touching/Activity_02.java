@@ -2,6 +2,7 @@ package com.hhu.acd.touching;
 
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
@@ -68,6 +69,7 @@ public class Activity_02 extends AppCompatActivity  {
             @Override
             public void onClick(View v) {
                 getDataAsync(phonenumber.getText().toString());
+
             }
             /*@Override
             public void onClick(View v) {
@@ -211,7 +213,7 @@ public class Activity_02 extends AppCompatActivity  {
                     Log.d("kwwl","response.body().string()=="+response.body().string());*/
                     if (response.code() == 200) {
                         mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
-
+                        send_msg.setBackgroundColor(Color.GRAY);
                         mHandler.obtainMessage(2,response.body().string().trim()).sendToTarget();
                         //identity = response.body().string();
                     } else
