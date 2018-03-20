@@ -44,8 +44,8 @@
         <!-- APP key, 可以在这里设置，也可以在 SDKOptions 中提供。
             如果 SDKOptions 中提供了，取 SDKOptions 中的值。 -->
         <meta-data
-            android:name="6999993078e301f0a55c57ab9ddd3a06"
-            android:value="cd21df95c2a6" />
+            android:name="com.netease.nim.appKey"
+            android:value="6999993078e301f0a55c57ab9ddd3a06" />
 
         <!-- 云信后台服务，请使用独立进程。 -->
         <service

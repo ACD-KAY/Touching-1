@@ -38,7 +38,7 @@ public class NimApplication extends Application {
         super.onCreate();
         mInstance = this;
         // SDK初始化（启动后台服务，若已经存在用户登录信息， SDK 将完成自动登录）
-
+        NIMClient.init(this, loginInfo(), options());
         mMyOkhttp  = new MyOkHttp();
         // ... your codes
         if (NIMUtil.isMainProcess(this)) {

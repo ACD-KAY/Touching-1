@@ -49,6 +49,8 @@ dependencies {
     compile 'com.netease.nimlib:avchat:4.4.0'
     compile 'com.netease.nimlib:chatroom:4.4.0'
     compile 'com.tsy:myokhttp:1.1.0'
+    compile 'cn.bingoogolapple:bga-banner:2.1.7@aar'
+    compile 'cn.bingoogolapple:bga-badgeview:1.1.3@aar'
 
 
 }

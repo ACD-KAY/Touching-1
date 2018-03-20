@@ -29,37 +29,8 @@ public class Activity_01 extends AppCompatActivity {
     private EditText account;
     private EditText password;
     private final MyHandler mHandler = new MyHandler(this);
-    public void doLogin(String account,String token) {
-        LoginInfo info = new LoginInfo(account,token); // config...
-        RequestCallback<LoginInfo> callback =
-                new RequestCallback<LoginInfo>() {
-                    @Override
-                    public void onSuccess(LoginInfo param) {
 
-                        mHandler.obtainMessage(1,"登录成功").sendToTarget();
 
-                        Intent it = new Intent(Activity_01.this, Activity_03.class);
-                        startActivity(it);
-                    }
-
-                    @Override
-                    public void onFailed(int code) {
-
-                        mHandler.obtainMessage(1,"登录失败,请检查帐号或密码").sendToTarget();
-
-                    }
-
-                    @Override
-                    public void onException(Throwable exception) {
-
-                        mHandler.obtainMessage(1,"可能哪里粗了未知问题额").sendToTarget();
-
-                    }
-                    // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
-                };
-        NIMClient.getService(AuthService.class).login(info)
-                .setCallback(callback);
-    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -121,5 +92,37 @@ public class Activity_01 extends AppCompatActivity {
                     break;
             }
         }
+    }
+
+    public void doLogin(String account,String token) {
+            LoginInfo info = new LoginInfo(account, token); // config...
+            RequestCallback<LoginInfo> callback =
+                    new RequestCallback<LoginInfo>() {
+                        @Override
+                        public void onSuccess(LoginInfo param) {
+
+                            mHandler.obtainMessage(1, "登录成功").sendToTarget();
+
+                            Intent it = new Intent(Activity_01.this, Activity_03.class);
+                            startActivity(it);
+                        }
+
+                        @Override
+                        public void onFailed(int code) {
+
+                            mHandler.obtainMessage(1, "登录失败,请检查帐号或密码"+code).sendToTarget();
+
+                        }
+
+                        @Override
+                        public void onException(Throwable exception) {
+
+                            mHandler.obtainMessage(1, "可能哪里粗了未知问题额").sendToTarget();
+
+                        }
+                        // 可以在此保存LoginInfo到本地，下次启动APP做自动登录用
+                    };
+            NIMClient.getService(AuthService.class).login(new LoginInfo(account, token))
+                    .setCallback(callback);
     }
 }

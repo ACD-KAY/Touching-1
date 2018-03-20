@@ -207,22 +207,20 @@ public class Activity_02 extends AppCompatActivity  {
             }
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                if (response.isSuccessful()) {//回调的方法执行在子线程。
+                //回调的方法执行在子线程。
                     /*Log.d("kwwl","获取数据成功了");
                     Log.d("kwwl","response.code()=="+response.code());
                     Log.d("kwwl","response.body().string()=="+response.body().string());*/
                     if (response.code() == 200) {
                         mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
-                        send_msg.setBackgroundColor(Color.GRAY);
+                        //send_msg.setBackgroundColor(Color.GRAY);
                         mHandler.obtainMessage(2,response.body().string().trim()).sendToTarget();
                         //identity = response.body().string();
                     } else
                         mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
 
 
-                }
-                else
-                    mHandler.obtainMessage(1, "可能网络出了点问题").sendToTarget();
+
             }
         });
     }

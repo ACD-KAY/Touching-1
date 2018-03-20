@@ -7,8 +7,8 @@ public class message_data {
     private int imgurl;
     private String name;
     private String massage;
-    private int user_id;
-    public message_data(int imgurl, String name, String massage, int user_id){
+    private String user_id;
+    public message_data(int imgurl, String name, String massage, String user_id){
         this.imgurl=imgurl;
         this.name=name;
         this.massage=massage;
@@ -23,6 +23,6 @@ public class message_data {
     protected String getMassage(){
         return this.massage;
     }
-    protected int getUser_id(){return this.user_id;}
+    protected String getUser_id(){return this.user_id;}
 }
 

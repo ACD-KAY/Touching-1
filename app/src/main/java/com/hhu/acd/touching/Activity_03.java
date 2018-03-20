@@ -2,13 +2,16 @@ package com.hhu.acd.touching;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.BitmapFactory;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,14 +19,19 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.ImageButton;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.stfalcon.multiimageview.MultiImageView;
+import com.ajguan.library.EasyRefreshLayout;
+import com.ajguan.library.LoadModel;
+import com.google.gson.Gson;
+import com.netease.nimlib.sdk.NIMClient;
+import com.netease.nimlib.sdk.RequestCallbackWrapper;
+import com.netease.nimlib.sdk.msg.MsgService;
+import com.netease.nimlib.sdk.msg.model.RecentContact;
 
 public class Activity_03 extends AppCompatActivity {
 
@@ -32,19 +40,42 @@ public class Activity_03 extends AppCompatActivity {
     private ImageButton btn,btn1,btn2,btn3;
 
     private RecyclerView mRecyclerView;
-
-    private MyAdapter mAdapter;
-
+    private MyHandler mHandler=new MyHandler(this);
+    private MyAdapter_03 mAdapter;
+    EasyRefreshLayout easyRefreshLayout;
     private RecyclerView.LayoutManager mLayoutManager;
     private PopupWindow mDropdown = null;
     LayoutInflater mInflater;
     ImageButton pop;
-
+    private Gson gson;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_03);
+        easyRefreshLayout.setLoadMoreModel(LoadModel.NONE);
+        easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
+
+
+            @Override
+            public void onLoadMore() {
+
+            }
+
+            @Override
+            public void onRefreshing() {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        getData();
+                        easyRefreshLayout.refreshComplete();
+                        Toast.makeText(getApplicationContext(), "refresh success", Toast.LENGTH_SHORT).show();
+                    }
+                }, 1000);
+
+            }
+        });
+        mRecyclerView.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(this));
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
@@ -108,7 +139,7 @@ public class Activity_03 extends AppCompatActivity {
 
     private void initData() {
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mAdapter = new MyAdapter(this,getData());
+       // mAdapter = new MyAdapter(this,);
         mAdapter.setHasStableIds(true);
     }
 
@@ -118,7 +149,7 @@ public class Activity_03 extends AppCompatActivity {
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new MyAdapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new MyAdapter_03.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(Activity_03.this,"click " + position + " item", Toast.LENGTH_SHORT).show();
@@ -133,15 +164,22 @@ public class Activity_03 extends AppCompatActivity {
 
     }
 
-    private ArrayList<message_data> getData() {
-        ArrayList<message_data> data = new ArrayList<>();
-        int url= R.drawable.bussiness_man;
-        for(int i = 0; i < 15; i++) {
-            data.add(new message_data(url," 李子铭","这只是测试",1998));
-        }
+    private void getData() {
+        NIMClient.getService(MsgService.class).queryRecentContacts()
+                .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
+                    @Override
+                    public void onResult(int code, List<RecentContact> recents, Throwable e) {
+                        // recents参数即为最近联系人列表（最近会话列表）
+                        Message msg=Message.obtain();
+                        msg.what=1;
+                        msg.obj=recents;
 
-        return data;
+                        mHandler.sendMessage(msg);
+                    }
+                });
     }
+
+
 
 
     private PopupWindow initiatePopupWindow() {
@@ -184,6 +222,41 @@ public class Activity_03 extends AppCompatActivity {
         Intent i=new Intent(Activity_03.this,Activity_05.class);
         startActivity(i);
         finish();
+    }
+    private static class MyHandler extends Handler {
+
+        //对Activity的弱引用
+        private final WeakReference<Activity_03> mActivity;
+
+        public MyHandler(Activity_03 activity) {
+            mActivity = new WeakReference<Activity_03>(activity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            Activity_03 activity = mActivity.get();
+            if (activity == null) {
+                super.handleMessage(msg);
+                return;
+            }
+            switch (msg.what) {
+                case 1:
+                    Toast.makeText(activity, (String) msg.obj, Toast.LENGTH_LONG).show();
+                    break;
+                case 2:
+                    activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
+                    break;
+                /*case 2:
+                    Toast.makeText(activity, "下载成功", Toast.LENGTH_SHORT).show();
+                    Bitmap bitmap = (Bitmap) msg.obj;
+                    activity.imageView.setVisibility(View.VISIBLE);
+                    activity.imageView.setImageBitmap(bitmap);
+                    break;*/
+                default:
+                    super.handleMessage(msg);
+                    break;
+            }
+        }
     }
 
 }

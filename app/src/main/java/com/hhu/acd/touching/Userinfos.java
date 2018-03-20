@@ -6,6 +6,12 @@ public class Userinfos {
     private String nick;
 
     private String password;
+    public Userinfos(String userid,String nick,String password){
+        this.userid=userid;
+        this.nick=nick;
+        this.password=password;
+
+    }
 
     public String getUserId() {
         return userid;
