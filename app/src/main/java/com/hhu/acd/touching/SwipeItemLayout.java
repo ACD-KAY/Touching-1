@@ -1,6 +1,8 @@
+
+
 package com.hhu.acd.touching;
 
-import android.view.ViewGroup;
+
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.v4.view.ViewCompat;
@@ -16,9 +18,6 @@ import android.view.ViewParent;
 import android.view.animation.Interpolator;
 import android.widget.Scroller;
 
-/**
- * Created by liziming on 18-3-20.
- */
 
 public class SwipeItemLayout extends ViewGroup {
     enum Mode{
@@ -743,4 +742,5 @@ public class SwipeItemLayout extends ViewGroup {
         }
 
     }
+
 }

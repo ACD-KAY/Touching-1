@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.hhu.acd.touching.SwipeItemLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/ll_root"
     android:layout_width="match_parent"
@@ -13,7 +13,7 @@
 
 
         <LinearLayout
-            android:id="@+id/content"
+            android:id="@+id/main"
             app:layout_itemType="main"
             android:orientation="horizontal"
             android:layout_width="match_parent"
@@ -24,7 +24,7 @@
 
 
 
-            <com.stfalcon.multiimageview.MultiImageView
+            <ImageView
                 android:id="@+id/chat_item_portrait"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
@@ -106,25 +106,28 @@
             android:background="@android:color/holo_red_light"
             android:orientation="horizontal">
 
-            <TextView
+            <Button
+                android:id="@+id/stick"
                 android:layout_width="wrap_content"
                 app:layout_itemType="menu"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_bright"
+
+                android:background="@drawable/btn_stick"
                 android:clickable="true"
                 android:padding="20dp"
                 android:text=" 置顶" />
 
-            <TextView
-                android:id="@+id/right_menu_2"
+            <Button
+                android:id="@+id/delete"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 app:layout_itemType="menu"
-                android:background="@color/accent"
+
+                android:background="@drawable/btn_delete"
                 android:clickable="true"
                 android:padding="20dp"
                 android:text="删除" />
 
         </LinearLayout>
 
-</LinearLayout>
+</com.hhu.acd.touching.SwipeItemLayout>

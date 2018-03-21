@@ -85,13 +85,13 @@ public class Activity_02_2 extends AppCompatActivity {
             switch (v.getId()) {
                 case R.id.register_btn_sure:                       //确认按钮的监听事件
 
-                    if (!isUserNameAndPwdValid())
+                    if (isUserNameAndPwdValid())
                     {   //gson.toJson(new Userinfos(id,mAccount.getText().toString().trim(),mPwd.getText().toString().trim()));
                         OkHttpClient client = new OkHttpClient();
                         MediaType JSON = MediaType.parse("application/json; charset=utf-8");
                         RequestBody body = RequestBody.create(JSON, gson.toJson(new Userinfos(id,mAccount.getText().toString().trim(),mPwd.getText().toString().trim())));
                         Request request = new Request.Builder()
-                                .url(okhttpurl.url_sendmsg)
+                                .url(okhttpurl.url_registeruser)
                                 .post(body)
                                 .build();
                         client.newCall(request).enqueue(new Callback() {
@@ -103,9 +103,9 @@ public class Activity_02_2 extends AppCompatActivity {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
 
-                                if (response.code() == 200) {
+                                if (response.isSuccessful()) {
                                     if(gson .fromJson(response.body().string(),boolean.class)==true)
-                                    {mHandler.obtainMessage(1, "注册成功！").sendToTarget();
+                                    {   mHandler.obtainMessage(1, "注册成功！").sendToTarget();
                                         //send_msg.setBackgroundColor(Color.GRAY);
                                         //mHandler.obtainMessage(2,response.body().string().trim()).sendToTarget();
                                         finish();
@@ -122,6 +122,8 @@ public class Activity_02_2 extends AppCompatActivity {
                             }
                         });
                     }
+                    else
+                        mHandler.obtainMessage(1, "昵称或密码为空！！！").sendToTarget();
                     break;
                 case R.id.register_btn_cancel:                     //取消按钮的监听事件,由注册界面返回登录界面
 

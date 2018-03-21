@@ -197,7 +197,7 @@ public class Activity_02 extends AppCompatActivity  {
         FormBody.Builder formBody = new FormBody.Builder();//创建表单请求体
         formBody.add("id",PHONE);//传递键值对参数
         Request request = new Request.Builder()
-                .url(okhttpurl.url_sendmsg)
+                .url(okhttpurl.url_sendmsg_test)
                 .post(formBody.build())
                 .build();
         client.newCall(request).enqueue(new Callback() {
@@ -211,12 +211,13 @@ public class Activity_02 extends AppCompatActivity  {
                     /*Log.d("kwwl","获取数据成功了");
                     Log.d("kwwl","response.code()=="+response.code());
                     Log.d("kwwl","response.body().string()=="+response.body().string());*/
-                    if (response.code() == 200) {
+                    if (response.isSuccessful()) {
                         mHandler.obtainMessage(1, "请注意查收短信！！").sendToTarget();
                         //send_msg.setBackgroundColor(Color.GRAY);
-                        mHandler.obtainMessage(2,response.body().string().trim()).sendToTarget();
+                        mHandler.obtainMessage(2, response.body().string().trim()).sendToTarget();
                         //identity = response.body().string();
-                    } else
+
+                    }else
                         mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
 
 

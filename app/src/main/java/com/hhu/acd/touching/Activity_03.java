@@ -6,12 +6,16 @@ import android.os.Bundle;
 
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,6 +49,9 @@ public class Activity_03 extends AppCompatActivity {
     EasyRefreshLayout easyRefreshLayout;
     private RecyclerView.LayoutManager mLayoutManager;
     private PopupWindow mDropdown = null;
+    ArrayList<message_data> list;
+
+
     LayoutInflater mInflater;
     ImageButton pop;
     private Gson gson;
@@ -53,6 +60,11 @@ public class Activity_03 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_03);
+
+        //initData();
+        initView();
+
+        easyRefreshLayout=findViewById(R.id.easylayout);
         easyRefreshLayout.setLoadMoreModel(LoadModel.NONE);
         easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
 
@@ -67,7 +79,25 @@ public class Activity_03 extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        getData();
+                        /*NIMClient.getService(MsgService.class).queryRecentContacts()
+                                .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
+                                    @Override
+                                    public void onResult(int code, List<RecentContact> recents, Throwable e) {
+                                        // recents参数即为最近联系人列表（最近会话列表）
+                                        Message msg=Message.obtain();
+                                        msg.what=2;
+                                        msg.obj=recents;
+
+                                        mHandler.sendMessage(msg);
+                                    }
+                                });*/
+                        /*Message msg=Message.obtain();
+                        msg.what=4;
+                        msg.obj=new message_data(1,"1","1","1");
+
+                        mHandler.sendMessage(msg);*/
+                        //list.add(new message_data(1,"1","1","1"));
+                       // mAdapter.notifyDataSetChanged();
                         easyRefreshLayout.refreshComplete();
                         Toast.makeText(getApplicationContext(), "refresh success", Toast.LENGTH_SHORT).show();
                     }
@@ -80,8 +110,8 @@ public class Activity_03 extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
         //((MultiImageView)findViewById(R.id.chat_item_test)).addImage(BitmapFactory.decodeResource(getResources(),R.mipmap.bussiness_man));
-        initData();
-        initView();
+        //initData();
+
         pop = findViewById(R.id.addfriends);
         pop.setOnClickListener(new View.OnClickListener() {
 
@@ -95,15 +125,7 @@ public class Activity_03 extends AppCompatActivity {
 
         getSupportActionBar().setDisplayShowTitleEnabled(false);
 
-        /** 跳转到添加好友界面*/
-        btn=(ImageButton)findViewById(R.id.addfriends);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Activity_03.this, Activity_11.class);
-                startActivity(it);
-            }
-        });
+
 
         /** 跳转到消息界面*/
         btn1=(ImageButton)findViewById(R.id.message);
@@ -138,18 +160,33 @@ public class Activity_03 extends AppCompatActivity {
 
 
     private void initData() {
-        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-       // mAdapter = new MyAdapter(this,);
-        mAdapter.setHasStableIds(true);
+        NIMClient.getService(MsgService.class).queryRecentContacts()
+                .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
+                    @Override
+                    public void onResult(int code, List<RecentContact> recents, Throwable e) {
+                        // recents参数即为最近联系人列表（最近会话列表）
+                        Message msg=Message.obtain();
+                        msg.what=2;
+                        msg.obj=recents;
+
+                        mHandler.sendMessage(msg);
+                    }
+                });
     }
 
     private void initView() {
+        list= new ArrayList<>();
+        list.add(new message_data(1,"1","1","1"));
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
+        mAdapter = new MyAdapter_03(this,list);
+
+        mAdapter.setHasStableIds(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new MyAdapter_03.OnItemClickListener() {
+        /*mAdapter.setOnItemClickListener(new MyAdapter_03.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(Activity_03.this,"click " + position + " item", Toast.LENGTH_SHORT).show();
@@ -159,25 +196,25 @@ public class Activity_03 extends AppCompatActivity {
             //public void onItemLongClick(View view, int position) {
             //Toast.makeText(MDRvActivity.this,"long click " + position + " item", Toast.LENGTH_SHORT).show();
             //}
-        });
+        });*/
 
 
     }
 
-    private void getData() {
+    /*private void getData() {
         NIMClient.getService(MsgService.class).queryRecentContacts()
                 .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
                     @Override
                     public void onResult(int code, List<RecentContact> recents, Throwable e) {
                         // recents参数即为最近联系人列表（最近会话列表）
                         Message msg=Message.obtain();
-                        msg.what=1;
+                        msg.what=2;
                         msg.obj=recents;
 
                         mHandler.sendMessage(msg);
                     }
                 });
-    }
+    }*/
 
 
 
@@ -244,7 +281,14 @@ public class Activity_03 extends AppCompatActivity {
                     Toast.makeText(activity, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case 2:
-                    activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
+                    //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
+                    break;
+                case 3:
+                    //activity.mAdapter.updateData((List<RecentContact>)msg.obj);
+                    break;
+                case 4:
+                    activity.list.add((message_data)msg.obj);
+                    activity.mAdapter.updateData(activity.list);
                     break;
                 /*case 2:
                     Toast.makeText(activity, "下载成功", Toast.LENGTH_SHORT).show();
