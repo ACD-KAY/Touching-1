@@ -10,6 +10,7 @@ public class okhttpurl {
     public  static String url_registeruser="http://106.14.195.234/springmvc/user/registeruser";//注册用户
     public  static String url_sendmsg_test="http://192.168.1.107/springmvc/user/sendMessage";
     public  static String url_registeruser_test="http://192.168.1.107/springmvc/user/registeruser";
+    public  static String url_image="http://106.14.195.234/springmvc/images/000.jpeg";
 
     
 }

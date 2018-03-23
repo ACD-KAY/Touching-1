@@ -62,12 +62,13 @@ public class MyAdapter_03 extends RecyclerView.Adapter<MyAdapter_03.ViewHolder>{
     }
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
+        //String URL="http://106.14.195.234/springmvc/images/000.jpeg";
         // 绑定数据
         //Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position));
         //holder.chat_item_portrait.addImage(bitmap);
         Glide.with(context)
 
-                .load("http://106.14.195.234/springmvc/images/000.jpeg")
+                .load(okhttpurl.url_image)
                 .apply(new RequestOptions()
                         .placeholder(R.drawable.face))
                 .into(holder.chat_item_portrait);
