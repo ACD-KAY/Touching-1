@@ -31,16 +31,16 @@ import jp.wasabeef.glide.transformations.CropCircleTransformation;
 public class MyAdapter_03 extends RecyclerView.Adapter<MyAdapter_03.ViewHolder>{
     //private OnItemClickListener onItemClickListener;
 
-    private ArrayList<message_data> mData;
+    private ArrayList<RecentContact> mData;
     private Context context;
     private Resources resources;
-    public MyAdapter_03(Context context, ArrayList<message_data> data) {
+    public MyAdapter_03(Context context, ArrayList<RecentContact> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
     }
 
-    public void updateData(ArrayList<message_data> data) {
+    public void updateData(ArrayList<RecentContact> data) {
         this.mData = data;
         notifyDataSetChanged();
     }
@@ -72,16 +72,16 @@ public class MyAdapter_03 extends RecyclerView.Adapter<MyAdapter_03.ViewHolder>{
                         .placeholder(R.drawable.face))
                 .into(holder.chat_item_portrait);
 
-        //holder.chat_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
-        /*holder.name.setText(mData.get(position).getContactId());
+        holder.chat_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
+        holder.name.setText(mData.get(position).getContactId());
         holder.message.setText(mData.get(position).getContent());
-        holder.time.setText(TimeUtil.getTimeString(mData.get(position).getTime()));
+        holder.time.setText(TimeUtil.getFormatTime(mData.get(position).getTime()));
         int unread=mData.get(position).getUnreadCount();
         if (unread != 0) {
             holder.messageNum.showCirclePointBadge();
             holder.messageNum.showTextBadge(unread + "");
         }
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
+        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
                 if(onItemClickListener != null) {
@@ -91,14 +91,14 @@ public class MyAdapter_03 extends RecyclerView.Adapter<MyAdapter_03.ViewHolder>{
             }
         });*/
         //holder.chat_item_portrait.setImageBitmap(BitmapFactory.decodeResource(resources,R.drawable.bussiness_man));
-        holder.name.setText(mData.get(position).getName());
-        holder.message.setText(mData.get(position).getMassage());
-        holder.time.setText(TimeUtil.getFormatTime(600000000));
-        int unread=6;
+        //holder.name.setText(mData.get(position).getName());
+        //holder.message.setText(mData.get(position).getMassage());
+       // holder.time.setText(TimeUtil.getFormatTime(600000000));
+        /*int unread=6;
         if (unread != 0) {
             holder.messageNum.showCirclePointBadge();
             holder.messageNum.showTextBadge(unread + "");
-        }
+        }*/
         /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {

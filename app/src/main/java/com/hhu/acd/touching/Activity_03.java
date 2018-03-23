@@ -50,7 +50,7 @@ public class Activity_03 extends AppCompatActivity {
     EasyRefreshLayout easyRefreshLayout;
     private RecyclerView.LayoutManager mLayoutManager;
     private PopupWindow mDropdown = null;
-    ArrayList<message_data> list;
+    ArrayList<RecentContact> list;
 
 
     LayoutInflater mInflater;
@@ -80,18 +80,18 @@ public class Activity_03 extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        /*NIMClient.getService(MsgService.class).queryRecentContacts()
+                        NIMClient.getService(MsgService.class).queryRecentContacts()
                                 .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
                                     @Override
                                     public void onResult(int code, List<RecentContact> recents, Throwable e) {
                                         // recents参数即为最近联系人列表（最近会话列表）
                                         Message msg=Message.obtain();
-                                        msg.what=2;
+                                        msg.what=3;
                                         msg.obj=recents;
 
                                         mHandler.sendMessage(msg);
                                     }
-                                });*/
+                                });
                         /*Message msg=Message.obtain();
                         msg.what=4;
                         msg.obj=new message_data(1,"1","1","1");
@@ -176,8 +176,19 @@ public class Activity_03 extends AppCompatActivity {
     }
 
     private void initView() {
-        list= new ArrayList<>();
-        list.add(new message_data(1,"1","1","1"));
+        NIMClient.getService(MsgService.class).queryRecentContacts()
+                .setCallback(new RequestCallbackWrapper<List<RecentContact>>() {
+                    @Override
+                    public void onResult(int code, List<RecentContact> recents, Throwable e) {
+                        // recents参数即为最近联系人列表（最近会话列表）
+                        Message msg=Message.obtain();
+                        msg.what=2;
+                        msg.obj=recents;
+
+                        mHandler.sendMessage(msg);
+                    }
+                });
+        //list.add(new message_data(1,"1","1","1"));
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mAdapter = new MyAdapter_03(this,list);
 
@@ -282,15 +293,16 @@ public class Activity_03 extends AppCompatActivity {
                     Toast.makeText(activity, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case 2:
+                    activity.list=(ArrayList<RecentContact>)msg.obj;
                     //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
                     break;
                 case 3:
-                    //activity.mAdapter.updateData((List<RecentContact>)msg.obj);
+                    activity.mAdapter.updateData((ArrayList<RecentContact>)msg.obj);
                     break;
-                case 4:
+                /*case 4:
                     activity.list.add((message_data)msg.obj);
                     activity.mAdapter.updateData(activity.list);
-                    break;
+                    break;*/
                 /*case 2:
                     Toast.makeText(activity, "下载成功", Toast.LENGTH_SHORT).show();
                     Bitmap bitmap = (Bitmap) msg.obj;
