@@ -24,7 +24,7 @@
 
 
 
-            <ImageView
+            <com.stfalcon.multiimageview.MultiImageView
                 android:id="@+id/chat_item_portrait"
                 android:layout_width="50dp"
                 android:layout_height="50dp"

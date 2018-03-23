@@ -66,6 +66,7 @@ public class Activity_02_2 extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_02_2);
+        gson=new Gson();
         mMyOkhttp = NimApplication.getInstance().getMyOkHttp();
         id=getIntent().getExtras().getString("id");
         mAccount = (EditText) findViewById(R.id.resetpwd_edit_name);
@@ -103,7 +104,7 @@ public class Activity_02_2 extends AppCompatActivity {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
 
-                                if (response.isSuccessful()) {
+                                //if (response.isSuccessful()) {
                                     if(gson .fromJson(response.body().string(),boolean.class)==true)
                                     {   mHandler.obtainMessage(1, "注册成功！").sendToTarget();
                                         //send_msg.setBackgroundColor(Color.GRAY);
@@ -112,9 +113,9 @@ public class Activity_02_2 extends AppCompatActivity {
                                     }
                                      else
                                         mHandler.obtainMessage(1, "帐号已存在").sendToTarget();
-                                }
-                                else
-                                    mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
+                                //}
+                                //else
+                                   // mHandler.obtainMessage(1, "服务器出了点问题喽").sendToTarget();
 
 
 
