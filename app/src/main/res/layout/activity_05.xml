@@ -45,11 +45,23 @@
             android:layout_marginRight="10dp"/>
 
     </android.support.v7.widget.Toolbar>
+    <com.ajguan.library.EasyRefreshLayout
+        android:id="@+id/friends_easylayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
-    <ExpandableListView
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/my_recycler_view_friends"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:scrollbars="vertical"/>
+    </com.ajguan.library.EasyRefreshLayout>
+    <!--<ExpandableListView
         android:id="@+id/linkman_expand_list"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent" />-->
 
 
 </LinearLayout>

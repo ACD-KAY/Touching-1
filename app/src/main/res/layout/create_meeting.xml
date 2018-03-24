@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@color/secondary_text"
+    android:orientation="vertical"
+    >
+
+    <!--android:background="@android:drawable/list_selector_background"-->
+    <!--android:layout_height="?android:attr/listPreferredItemHeight"-->
+    <TextView
+        android:id="@+id/create_meeting"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+
+        android:text="创建会议"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        tools:ignore="HardcodedText"
+        android:background="@color/divider"/>
+
+
+</LinearLayout>

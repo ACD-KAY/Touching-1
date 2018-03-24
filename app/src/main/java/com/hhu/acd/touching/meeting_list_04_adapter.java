@@ -55,53 +55,6 @@ public long getItemId(int position) {
         }
 @Override
 public void onBindViewHolder(final ViewHolder holder, int position) {
-        //String URL="http://106.14.195.234/springmvc/images/000.jpeg";
-        // 绑定数据
-        //Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position));
-        //holder.chat_item_portrait.addImage(bitmap);
-        /*Glide.with(context)
-
-        .load(okhttpurl.url_image)
-        .apply(new RequestOptions()
-        .placeholder(R.drawable.face))
-        .into(holder.chat_item_portrait);
-
-        holder.chat_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
-        holder.name.setText(mData.get(position).getContactId());
-        holder.message.setText(mData.get(position).getContent());
-        holder.time.setText(TimeUtil.getFormatTime(mData.get(position).getTime()));
-        int unread=mData.get(position).getUnreadCount();
-        if (unread != 0) {
-        holder.messageNum.showCirclePointBadge();
-        holder.messageNum.showTextBadge(unread + "");
-        }*/
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                if(onItemClickListener != null) {
-                    int pos = holder.getLayoutPosition();
-                    onItemClickListener.onItemClick(holder.itemView, pos);
-                }
-            }
-        });*/
-        //holder.chat_item_portrait.setImageBitmap(BitmapFactory.decodeResource(resources,R.drawable.bussiness_man));
-        //holder.name.setText(mData.get(position).getName());
-        //holder.message.setText(mData.get(position).getMassage());
-        // holder.time.setText(TimeUtil.getFormatTime(600000000));
-        /*int unread=6;
-        if (unread != 0) {
-            holder.messageNum.showCirclePointBadge();
-            holder.messageNum.showTextBadge(unread + "");
-        }*/
-        /*holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(final View v) {
-                if(onItemClickListener != null) {
-                    int pos = holder.getLayoutPosition();
-                    onItemClickListener.onItemClick(holder.itemView, pos);
-                }
-            }
-        });*/
 
         }
 
