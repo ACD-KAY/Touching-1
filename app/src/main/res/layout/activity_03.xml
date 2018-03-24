@@ -82,7 +82,7 @@
                 android:background="#00000000"
                 android:padding="0dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/vector_drawable_comments"
+                android:src="@drawable/vector_drawable_comments_blue"
 
                 />
         </FrameLayout>
@@ -98,7 +98,7 @@
                 android:background="#00000000"
                 android:padding="0dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/vector_drawable_meeting"
+                android:src="@drawable/vector_drawable_meeting_white"
                 />
         </FrameLayout>
     </LinearLayout>
