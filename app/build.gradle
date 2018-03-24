@@ -54,6 +54,8 @@ dependencies {
     compile 'cn.bingoogolapple:bga-banner:2.1.7@aar'
     compile 'cn.bingoogolapple:bga-badgeview:1.1.3@aar'
     compile 'jp.wasabeef:glide-transformations:3.0.1'
+    compile 'com.miguelcatalan:materialsearchview:1.4.0'
+
 
 
 }

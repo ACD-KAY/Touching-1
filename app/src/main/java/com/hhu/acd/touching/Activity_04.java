@@ -4,38 +4,50 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.miguelcatalan.materialsearchview.MaterialSearchView;
+
 public class Activity_04 extends AppCompatActivity {
 
+    private Button torecentmsg;
+    private ImageButton create_meeting;
+   // private MaterialSearchView searchView;
 
 
-    private Button btn;
-
-    private TextView textview_title;
-    private TextView hello1;
-    private ImageButton img_shrink;
-    int myflag = 0;
-
-    /*@Override
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_04);
-        img_shrink= (ImageButton) findViewById(R.id.ib);
-        textview_title=(TextView) findViewById(R.id.tv);
-        hello1.setTextColor(Color.BLUE);
+        /*searchView = (MaterialSearchView) findViewById(R.id.search_view);
+        searchView.setOnQueryTextListener(new MaterialSearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                //Do some magic
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                //Do some magic
+                return false;
+            }
+        });*/
+
+    }
+    /*@Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.search_item, menu);
+
+        MenuItem item = menu.findItem(R.id.action_search);
+        searchView.setMenuItem(item);
+
+        return true;
     }*/
 
-    /**跳转到消息列表界面*/
-    /*btn =(Button)findViewById(R.id.message);
-    btn.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            Intent it = new Intent(Activity_04.this, Activity_03.class);
-            startActivity(it);
-        }
-    });*/
 }

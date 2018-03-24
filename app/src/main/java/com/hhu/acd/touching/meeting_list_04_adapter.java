@@ -24,16 +24,16 @@ import cn.bingoogolapple.badgeview.BGABadgeTextView;
 public class meeting_list_04_adapter extends RecyclerView.Adapter<meeting_list_04_adapter.ViewHolder>{
 //private OnItemClickListener onItemClickListener;
 
-private ArrayList<RecentContact> mData;
+private ArrayList<Meetings> mData;
 private Context context;
 private Resources resources;
-public meeting_list_04_adapter(Context context, ArrayList<RecentContact> data) {
+public meeting_list_04_adapter(Context context, ArrayList<Meetings> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
         }
 
-public void updateData(ArrayList<RecentContact> data) {
+public void updateData(ArrayList<Meetings> data) {
         this.mData = data;
         notifyDataSetChanged();
         }
@@ -44,7 +44,7 @@ public void updateData(ArrayList<RecentContact> data) {
 @Override
 public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         // 实例化展示的view
-        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_rv_item, parent, false);
+        View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.view_meeting_brief_item, parent, false);
         // 实例化viewholder
         ViewHolder viewHolder = new ViewHolder(v);
         return viewHolder;
@@ -59,7 +59,7 @@ public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
         //Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position));
         //holder.chat_item_portrait.addImage(bitmap);
-        Glide.with(context)
+        /*Glide.with(context)
 
         .load(okhttpurl.url_image)
         .apply(new RequestOptions()
@@ -74,7 +74,7 @@ public void onBindViewHolder(final ViewHolder holder, int position) {
         if (unread != 0) {
         holder.messageNum.showCirclePointBadge();
         holder.messageNum.showTextBadge(unread + "");
-        }
+        }*/
         /*holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -112,24 +112,18 @@ public int getItemCount() {
 
 public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     //private final WeakReference<Activity_02_2> mActivity;
-    MultiImageView chat_item_portrait;
-    TextView name;
-    TextView message;
-    TextView time;
-    BGABadgeTextView messageNum;
+    MultiImageView meeting_brief_item_portrait;
+    TextView meeting_brief_item_name;
+    TextView meeting_brief_item_place;
+    TextView meeting_brief_item_time;
+
     public ViewHolder(View itemView) {
         super(itemView);
-        chat_item_portrait= itemView.findViewById(R.id.chat_item_portrait);
-        name=itemView.findViewById(R.id.chat_item_name);
-        message=itemView.findViewById(R.id.chat_item_content);
-        time=itemView.findViewById(R.id.chat_item_time);
-        messageNum=itemView.findViewById(R.id.chat_item_message_num);
-        View main = itemView.findViewById(R.id.main);
-        main.setOnClickListener(this);
-        View delete = itemView.findViewById(R.id.delete);
-        delete.setOnClickListener(this);
-        View stick = itemView.findViewById(R.id.stick);
-        delete.setOnClickListener(this);
+        meeting_brief_item_portrait= itemView.findViewById(R.id.meeting_brief_item_portrait);
+        meeting_brief_item_name=itemView.findViewById(R.id.meeting_brief_item_name);
+        meeting_brief_item_place=itemView.findViewById(R.id.meeting_brief_item_place);
+        meeting_brief_item_time=itemView.findViewById(R.id.meeting_brief_item_time);
+
     }
 
     @Override

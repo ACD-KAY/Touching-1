@@ -128,15 +128,7 @@ public class Activity_03 extends AppCompatActivity {
 
 
 
-        /** 跳转到消息界面*/
-        btn1=(ImageButton)findViewById(R.id.message);
-        btn1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Activity_03.this, Activity_13.class);
-                startActivity(it);
-            }
-        });
+
 
         /** 跳转到会议界面*/
         btn2=(ImageButton)findViewById(R.id.meeting);

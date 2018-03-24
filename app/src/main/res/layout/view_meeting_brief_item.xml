@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    app:layout_itemType="main"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
+    <com.stfalcon.multiimageview.MultiImageView
+        android:id="@+id/meeting_brief_item_portrait"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
+        android:layout_marginLeft="6dp"
+        android:layout_marginRight="6dp"
+        android:scaleType="centerCrop"
+        android:background="@drawable/vector_drawable__meeting_image_black"
+
+        />
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/meeting_brief_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:text="计算机三班第一次班会"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentLeft="true"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:id="@+id/meeting_brief_item_place_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="地点："
+                android:textColor="@color/primary_text"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/meeting_brief_item_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="10sp"
+                android:layout_toRightOf="@id/meeting_brief_item_place_1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:text="4545646464646464"/>
+            <!--此处singleLine不可替换为maxLine="1"-->
+        </RelativeLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp">
+            <TextView
+                android:id="@+id/meeting_brief_item_time_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="时间："
+                android:textColor="@color/primary_text"
+                android:textSize="10sp"/>
+            <TextView
+                android:id="@+id/meeting_brief_item_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/meeting_brief_item_time_1"
+                android:ellipsize="end"
+                android:singleLine="true"
+                android:textSize="10sp"/>
+            <!--此处singleLine不可替换为maxLine="1"-->
+        </RelativeLayout>
+    </LinearLayout>
+
+</LinearLayout>
