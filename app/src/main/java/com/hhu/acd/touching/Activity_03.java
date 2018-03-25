@@ -42,7 +42,7 @@ public class Activity_03 extends AppCompatActivity {
 
 
 
-    private ImageButton btn,btn1,btn2,btn3;
+    private ImageButton btn2,btn3;
 
     private RecyclerView mRecyclerView;
     private MyHandler mHandler=new MyHandler(this);
@@ -107,7 +107,7 @@ public class Activity_03 extends AppCompatActivity {
             }
         });
         mRecyclerView.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(this));
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar03);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
         //((MultiImageView)findViewById(R.id.chat_item_test)).addImage(BitmapFactory.decodeResource(getResources(),R.mipmap.bussiness_man));

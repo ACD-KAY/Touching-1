@@ -16,6 +16,10 @@ public class Meetings {
     private Date end;
 
     private String place;
+    
+    private String[] members;
+    
+    private  String intro;
 
     public Integer getIdmeetings() {
         return idmeetings;
@@ -72,4 +76,20 @@ public class Meetings {
     public void setPlace(String place) {
         this.place = place == null ? null : place.trim();
     }
+
+	public String[] getMembers() {
+		return members;
+	}
+
+	public void setMembers(String[] members) {
+		this.members = members==null ? okhttpurl.members:members;
+	}
+
+	public String getIntro() {
+		return intro;
+	}
+
+	public void setIntro(String intro) {
+		this.intro = intro==null?"":intro;
+	}
 }

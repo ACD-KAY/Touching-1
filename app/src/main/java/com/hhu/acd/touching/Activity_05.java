@@ -21,6 +21,9 @@ import android.widget.Toast;
 
 import com.ajguan.library.EasyRefreshLayout;
 import com.ajguan.library.LoadModel;
+import com.allenliu.badgeview.BadgeFactory;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
@@ -36,24 +39,20 @@ import java.util.List;
 
 public class Activity_05 extends AppCompatActivity {
 
-    private ImageView btn;
-    private ImageButton btn2;
+
+    private ImageButton newfriends;
     private RecyclerView.LayoutManager mLayoutManager;
     private friends_list_05_adapter mAdapter;
     private RecyclerView mRecyclerView;
     EasyRefreshLayout easyRefreshLayout;
     private MyHandler mHandler=new MyHandler(this);
-    //private ExpandableListView listview;
-    //private ArrayList<linkman_group> list = new ArrayList<linkman_group>();
-    //int[] img = new int[6];
-    MultiImageView my_portrait;
-    linkman_adapter adapter;
-    ArrayList<NimUserInfo> list;
+    ImageView my_portrait;
+    List<NimUserInfo> list;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_05);
-        getfriends();
+        //getfriends();
         //initData();
         //listview =  findViewById(R.id.linkman_expand_list);
         //getlinkman();
@@ -66,10 +65,15 @@ public class Activity_05 extends AppCompatActivity {
                 return true;
             }
         });*/
-        my_portrait=findViewById(R.id.my_head_portrait);
+        my_portrait=findViewById(R.id.my_head_portrait05);
         //my_portrait.addImage(BitmapFactory.decodeResource(getResources(),R.drawable.bussiness_man));
-        my_portrait.setShape(MultiImageView.Shape.CIRCLE);
-        easyRefreshLayout=findViewById(R.id.friends_easylayout);
+        String url = "http://www.guolin.tech/book.png";
+        Glide.with(this)
+                .load(url)
+                .apply(new RequestOptions().circleCrop())
+                .into(my_portrait);
+        //my_portrait.setShape(MultiImageView.Shape.CIRCLE);
+        easyRefreshLayout=findViewById(R.id.friends_easylayout05);
         easyRefreshLayout.setLoadMoreModel(LoadModel.NONE);
         easyRefreshLayout.addEasyEvent(new EasyRefreshLayout.EasyEvent() {
 
@@ -85,7 +89,24 @@ public class Activity_05 extends AppCompatActivity {
                     @Override
                     public void run() {
 
+                        List<String> accounts = NIMClient.getService(FriendService.class).getFriendAccounts();
+                        NIMClient.getService(UserService.class).fetchUserInfo(accounts)
+                                .setCallback(new RequestCallback<List<NimUserInfo>>() {
+                                    @Override
+                                    public void onSuccess(List<NimUserInfo> param) {
+                                        mHandler.obtainMessage(3,param).sendToTarget();
+                                    }
 
+                                    @Override
+                                    public void onFailed(int code) {
+                                        mHandler.obtainMessage(1," 获取信息失败").sendToTarget();
+                                    }
+
+                                    @Override
+                                    public void onException(Throwable exception) {
+                                        mHandler.obtainMessage(1," 可能哪里出现了问题").sendToTarget();
+                                    }
+                                });
                         easyRefreshLayout.refreshComplete();
                         Toast.makeText(getApplicationContext(), "refresh success", Toast.LENGTH_SHORT).show();
                     }
@@ -94,25 +115,18 @@ public class Activity_05 extends AppCompatActivity {
             }
         });
 
-        /**跳转到个人信息界面*/
-        btn=(ImageButton)findViewById(R.id.my_head_portrait);
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Activity_05.this, Activity_12.class);
-                startActivity(it);
-            }
-        });
 
-        /**跳转到添加好友界面*/
-        btn2=(ImageButton)findViewById(R.id.addfriends);
-        btn2.setOnClickListener(new View.OnClickListener() {
+
+        /**跳转到验证消息界面*/
+        newfriends=(ImageButton)findViewById(R.id.newfriends05);
+        newfriends.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent(Activity_05.this, Activity_14.class);
                 startActivity(it);
             }
         });
+        //BadgeFactory.createCircle(this).setBadgeCount(20).bind(newfriends);
     }
     /*private void initData() {
         for (int i = 0; i < img.length; i++) {
@@ -144,24 +158,24 @@ public class Activity_05 extends AppCompatActivity {
                 .setCallback(new RequestCallback<List<NimUserInfo>>() {
                     @Override
                     public void onSuccess(List<NimUserInfo> param) {
-
+                        mHandler.obtainMessage(2,param).sendToTarget();
                     }
 
                     @Override
                     public void onFailed(int code) {
-
+                        mHandler.obtainMessage(1," 获取信息失败").sendToTarget();
                     }
 
                     @Override
                     public void onException(Throwable exception) {
-
+                        mHandler.obtainMessage(1," 可能哪里出现了问题").sendToTarget();
                     }
                 });
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         mAdapter = new friends_list_05_adapter(this,list);
 
         mAdapter.setHasStableIds(true);
-        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
+        mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_friends05);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
@@ -219,7 +233,7 @@ public class Activity_05 extends AppCompatActivity {
         }
 
         *//**
-         * @param params 这里的params是一个数组，即AsyncTask在激活运行是调用execute()方法传入的参数
+         //* @param params 这里的params是一个数组，即AsyncTask在激活运行是调用execute()方法传入的参数
          *//*
         @Override
         protected  String doInBackground(String... params) {
@@ -329,11 +343,19 @@ public class Activity_05 extends AppCompatActivity {
                     Toast.makeText(activity, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case 2:
-                    activity.list=(ArrayList<NimUserInfo>)msg.obj;
+                    Glide.with(activity)
+                            .load(okhttpurl.url_image)
+
+                            .into(activity.my_portrait);
+                    activity.list=(List<NimUserInfo>)msg.obj;
                     //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
                     break;
                 case 3:
-                    activity.mAdapter.updateData((ArrayList<NimUserInfo>)msg.obj);
+                    Glide.with(activity)
+                            .load(okhttpurl.url_image)
+
+                            .into(activity.my_portrait);
+                    activity.mAdapter.updateData((List<NimUserInfo>)msg.obj);
                     break;
                 /*case 4:
                     activity.list.add((message_data)msg.obj);
