@@ -36,7 +36,7 @@ public class fragment_meeting_create extends Fragment {
     private RecyclerView mRecyclerView;
     private Context mContext;
     private MyHandler mHandler = new MyHandler(this);
-    private fragment_meeting_adapter mAdapter;
+    private fragment_meeting_create_adapter mAdapter;
     View view;
     private RecyclerView.LayoutManager mLayoutManager;
     ArrayList<Meetings> list;
@@ -62,7 +62,7 @@ public class fragment_meeting_create extends Fragment {
                 .build();
         Request request = new Request.Builder()
                 .url(okhttpurl.url_searchmeetingbyowner)
-                .post(okhttp3.internal.Util.EMPTY_REQUEST)
+                .post(formBody)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -82,16 +82,16 @@ public class fragment_meeting_create extends Fragment {
             }
         });
         mLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
-        mAdapter = new fragment_meeting_adapter(this.getContext(),);
+        mAdapter = new fragment_meeting_create_adapter(this.getContext(),list);
     }
 
     private void initView() {
-        mRecyclerView =  view.findViewById(R.id.fragment_my_meeting);
+        mRecyclerView =  view.findViewById(R.id.fragment_my_meeting_create);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
         mRecyclerView.setAdapter(mAdapter);
-        mAdapter.setOnItemClickListener(new fragment_meeting_adapter.OnItemClickListener() {
+        mAdapter.setOnItemClickListener(new fragment_meeting_create_adapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(mContext, "click " + position + " item", Toast.LENGTH_SHORT).show();
@@ -136,7 +136,7 @@ public class fragment_meeting_create extends Fragment {
                 case 3:
 
 
-                    activity.mAdapter.updateData((ArrayList<Team>) msg.obj);
+                    activity.mAdapter.updateData((ArrayList<Meetings>) msg.obj);
                     break;
                 /*case 4:
                     activity.list.add((message_data)msg.obj);
