@@ -28,7 +28,7 @@ public class fragment_meeting_notes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.mContext=getActivity();
-        view=inflater.inflate(R.layout.fragment_meeting_brief_message, null);
+        view=inflater.inflate(R.layout.fragment_meeting_brief_message_notes, null);
         initData();
         initView();
         return view;

@@ -4,7 +4,7 @@
             "outputFile": "/home/liziming/AndroidStudioProjects/Touching/uikit/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-pl/values-pl.xml",
             "map": [
                 {
-                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/bc1c4afe9ca8bcf2643dd4c7d4048a06/res/values-pl/values-pl.xml",
+                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/0a66312fc44efc2eba8688a3355b597a/res/values-pl/values-pl.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -14,7 +14,7 @@
                     }
                 },
                 {
-                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/52aec5dfcbeaf3ccc32ebffa30add022/res/values-pl/values-pl.xml",
+                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/0aac54aa98cb9a5ab9e5f2452cb58fb1/res/values-pl/values-pl.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",

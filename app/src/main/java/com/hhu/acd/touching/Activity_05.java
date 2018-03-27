@@ -3,16 +3,20 @@ package com.hhu.acd.touching;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Handler;
 import android.os.Message;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ExpandableListView;
 import android.widget.ImageButton;
@@ -22,12 +26,16 @@ import android.widget.Toast;
 import com.ajguan.library.EasyRefreshLayout;
 import com.ajguan.library.LoadModel;
 import com.allenliu.badgeview.BadgeFactory;
+
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.google.gson.Gson;
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.RequestCallback;
 import com.netease.nimlib.sdk.friend.FriendService;
+import com.netease.nimlib.sdk.msg.SystemMessageService;
+import com.netease.nimlib.sdk.msg.constant.SystemMessageType;
 import com.netease.nimlib.sdk.uinfo.UserService;
 import com.netease.nimlib.sdk.uinfo.model.NimUserInfo;
 import com.netease.nimlib.sdk.uinfo.model.UserInfo;
@@ -46,13 +54,17 @@ public class Activity_05 extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     EasyRefreshLayout easyRefreshLayout;
     private MyHandler mHandler=new MyHandler(this);
-    ImageView my_portrait;
+    Toolbar toolbar;
+    ImageButton my_portrait;
     List<NimUserInfo> list;
+    List<SystemMessageType> types = new ArrayList<SystemMessageType>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_05);
-        //getfriends();
+        types.add(SystemMessageType.AddFriend);
+        getfriends();
         //initData();
         //listview =  findViewById(R.id.linkman_expand_list);
         //getlinkman();
@@ -70,8 +82,15 @@ public class Activity_05 extends AppCompatActivity {
         String url = "http://www.guolin.tech/book.png";
         Glide.with(this)
                 .load(url)
-                .apply(new RequestOptions().circleCrop())
+                .apply(new RequestOptions()
+                .placeholder(R.drawable.bussiness_man)
+                .circleCrop())
                 .into(my_portrait);
+
+        toolbar = findViewById(R.id.toolbar05);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("");
+        getSupportActionBar().setDisplayShowTitleEnabled(false);
         //my_portrait.setShape(MultiImageView.Shape.CIRCLE);
         easyRefreshLayout=findViewById(R.id.friends_easylayout05);
         easyRefreshLayout.setLoadMoreModel(LoadModel.NONE);
@@ -126,7 +145,7 @@ public class Activity_05 extends AppCompatActivity {
                 startActivity(it);
             }
         });
-        //BadgeFactory.createCircle(this).setBadgeCount(20).bind(newfriends);
+
     }
     /*private void initData() {
         for (int i = 0; i < img.length; i++) {
@@ -152,6 +171,8 @@ public class Activity_05 extends AppCompatActivity {
         list.add(group2);
 
     }*/
+
+
     private void getfriends(){
         List<String> accounts = NIMClient.getService(FriendService.class).getFriendAccounts();
         NIMClient.getService(UserService.class).fetchUserInfo(accounts)
@@ -182,6 +203,8 @@ public class Activity_05 extends AppCompatActivity {
         mRecyclerView.setAdapter(mAdapter);
         //String linkmanstr=constant.URL_Linkman;
         //new MyAsyncTask(listview,this).execute(linkmanstr);
+        BadgeFactory.createCircle(this).setBadgeCount(NIMClient.getService(SystemMessageService.class)
+                .querySystemMessageUnreadCountByType(types)).setBadgeGravity(Gravity .RIGHT|Gravity.TOP).bind(toolbar);
     }
     public static boolean isNetworkAvailable(Context context) {
         try {
@@ -355,6 +378,8 @@ public class Activity_05 extends AppCompatActivity {
                             .load(okhttpurl.url_image)
 
                             .into(activity.my_portrait);
+                    BadgeFactory.createCircle(activity.getApplicationContext()).setBadgeCount(NIMClient.getService(SystemMessageService.class)
+                            .querySystemMessageUnreadCountByType(activity.types)).setBadgeGravity(Gravity .RIGHT|Gravity.TOP).bind(activity.toolbar);
                     activity.mAdapter.updateData((List<NimUserInfo>)msg.obj);
                     break;
                 /*case 4:

@@ -3,7 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal">
-    <com.stfalcon.multiimageview.MultiImageView
+    <ImageView
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_margin="5dp"
@@ -18,28 +18,28 @@
         android:layout_marginTop="5dp"
         android:textColor="@color/primary_text"
         android:text="111111111"
-        android:textSize="16dp"
+        android:textSize="20dp"
         android:singleLine="true"/>
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/meeting_name"
         android:layout_toEndOf="@id/meeting_image"
-        android:id="@+id/meeting_time"
-        android:textColor="@color/secondary_text"
-        android:text="time:2222222"
+        android:id="@+id/meeting_id"
+        android:textColor="@color/primary_text"
+        android:text="群号:"
         android:textSize="11dp"
         android:singleLine="true"/>
     <TextView
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/meeting_time"
-        android:layout_toEndOf="@id/meeting_image"
+        android:layout_below="@id/meeting_name"
+        android:layout_toRightOf="@id/meeting_id"
         android:textSize="11dp"
         android:textColor="@color/secondary_text"
-        android:text="place222222222222222"
+        android:text="1212121"
         android:singleLine="true"
-        android:id="@+id/meeting_place"/>
+        android:id="@+id/meeting_idnumber"/>
 
 
 </RelativeLayout>

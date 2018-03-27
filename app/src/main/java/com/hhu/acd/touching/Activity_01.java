@@ -29,12 +29,13 @@ public class Activity_01 extends AppCompatActivity {
     private EditText account;
     private EditText password;
     private final MyHandler mHandler = new MyHandler(this);
-
+    private String myid;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_01);
+
         account=findViewById(R.id.account);
         password=findViewById(R.id.password);
         /** when the user clicks "登录"*/
@@ -104,6 +105,7 @@ public class Activity_01 extends AppCompatActivity {
                             mHandler.obtainMessage(1, "登录成功").sendToTarget();
 
                             Intent it = new Intent(Activity_01.this, Activity_03.class);
+                            NimApplication.getInstance().setId(param.getAccount());
                             startActivity(it);
                         }
 

@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="帐号登录"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="#ffffff"
             android:layout_gravity="center_horizontal"
             />
 

@@ -32,6 +32,14 @@ public class NimApplication extends Application {
     public static Map<String, Long> map;
     private static NimApplication mInstance;
     public MyOkHttp mMyOkhttp ;
+    private String myid="" ;
+    public String getId(){
+        return myid;
+    }
+    public void setId(String s){
+        this.myid = s;
+    }
+
     @Override
     public void onCreate() {
         // ... your codes

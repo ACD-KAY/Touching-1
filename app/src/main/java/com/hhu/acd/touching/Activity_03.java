@@ -259,11 +259,7 @@ public class Activity_03 extends AppCompatActivity {
         return mDropdown;
 
     }
-    public void link_man(View view){
-        Intent i=new Intent(Activity_03.this,Activity_05.class);
-        startActivity(i);
-        finish();
-    }
+
     private static class MyHandler extends Handler {
 
         //对Activity的弱引用

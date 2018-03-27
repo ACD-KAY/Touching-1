@@ -4,17 +4,7 @@
             "outputFile": "/home/liziming/AndroidStudioProjects/Touching/uikit/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/support-compat-27.0.2.aar/52aec5dfcbeaf3ccc32ebffa30add022/res/values-v16/values-v16.xml",
-                    "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "65",
-                        "endOffsets": "116"
-                    }
-                },
-                {
-                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/bc1c4afe9ca8bcf2643dd4c7d4048a06/res/values-v16/values-v16.xml",
+                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/0a66312fc44efc2eba8688a3355b597a/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
@@ -30,6 +20,16 @@
                         "endLines": "6",
                         "endColumns": "12",
                         "endOffsets": "289"
+                    }
+                },
+                {
+                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/support-compat-27.1.0.aar/0aac54aa98cb9a5ab9e5f2452cb58fb1/res/values-v16/values-v16.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "65",
+                        "endOffsets": "116"
                     }
                 }
             ]

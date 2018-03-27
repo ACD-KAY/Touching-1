@@ -15,5 +15,5 @@ public class okhttpurl {
     public  static String url_createmeeting="http://106.14.195.234/springmvc/meeting/createmeeting";//创建会议，post传参Meetings类的json数据
     public  static String url_searchmeetingbytime="http://106.14.195.234/springmvc/meeting/searchmeetingbytime";//查找会议，通过时间，最多返回10条记录，无需post传参
     public  static String url_searchmeetingbyname="http://106.14.195.234/springmvc/meeting/searchmeetingbyname";//查找会议，通过关键字，post传参paramter “name”
-    
+    public  static String url_searchmeetingbyowner="http://106.14.195.234/springmvc/meeting/searchmeetingbyowner";
 }
