@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -13,6 +14,7 @@ import com.bumptech.glide.request.RequestOptions;
 import com.netease.nimlib.sdk.msg.model.RecentContact;
 import com.stfalcon.multiimageview.MultiImageView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import cn.bingoogolapple.badgeview.BGABadgeTextView;
@@ -23,7 +25,7 @@ import cn.bingoogolapple.badgeview.BGABadgeTextView;
 
 public class meeting_list_04_adapter extends RecyclerView.Adapter<meeting_list_04_adapter.ViewHolder>{
 //private OnItemClickListener onItemClickListener;
-
+SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:MM");
 private ArrayList<Meetings> mData;
 private Context context;
 private Resources resources;
@@ -55,6 +57,16 @@ public long getItemId(int position) {
         }
 @Override
 public void onBindViewHolder(final ViewHolder holder, int position) {
+    Glide.with(context)
+            .load(okhttpurl.url_image)
+            .apply(new RequestOptions()
+
+            .circleCrop())
+            .into(holder.meeting_brief_item_portrait);
+
+    holder.meeting_brief_item_name.setText(mData.get(position).getTname());
+    holder.meeting_brief_item_place.setText(mData.get(position).getPlace());
+    holder.meeting_brief_item_time.setText(sdf.format(mData.get(position).getStart())+"-"+sdf.format(mData.get(position).getEnd()));
 
         }
 
@@ -65,7 +77,7 @@ public int getItemCount() {
 
 public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     //private final WeakReference<Activity_02_2> mActivity;
-    MultiImageView meeting_brief_item_portrait;
+    ImageView meeting_brief_item_portrait;
     TextView meeting_brief_item_name;
     TextView meeting_brief_item_place;
     TextView meeting_brief_item_time;
@@ -82,20 +94,7 @@ public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClick
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.main:
-                //Toast.makeText(v.getContext(), "点击了main，位置为：" + getAdapterPosition(), Toast.LENGTH_SHORT).show();
-                break;
 
-            case R.id.delete:
-                int pos1 = getAdapterPosition();
-                mData.remove(pos1);
-                notifyItemRemoved(pos1);
-                break;
-            case R.id.stick:
-                int pos2 = getAdapterPosition();
-                mData.add(0,mData.get(pos2));
-                mData.remove(pos2+1);
-                notifyDataSetChanged();
         }
     }
 }

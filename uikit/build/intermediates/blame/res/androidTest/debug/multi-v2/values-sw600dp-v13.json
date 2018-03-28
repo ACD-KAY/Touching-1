@@ -38,7 +38,7 @@
             "outputFile": "/home/liziming/AndroidStudioProjects/Touching/uikit/build/intermediates/incremental/mergeDebugAndroidTestResources/merged.dir/values-sw600dp-v13/values-sw600dp-v13.xml",
             "map": [
                 {
-                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.0.2.aar/bc1c4afe9ca8bcf2643dd4c7d4048a06/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/appcompat-v7-27.1.0.aar/0a66312fc44efc2eba8688a3355b597a/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -48,7 +48,7 @@
                     }
                 },
                 {
-                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/design-27.0.2.aar/0091bab9de0c64973f6c1a6fa5ae7672/res/values-sw600dp-v13/values-sw600dp-v13.xml",
+                    "source": "/home/liziming/.gradle/caches/transforms-1/files-1.1/design-27.1.0.aar/2737507bd6ad3d1500a3302377d5a987/res/values-sw600dp-v13/values-sw600dp-v13.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4",

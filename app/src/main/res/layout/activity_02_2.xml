@@ -6,7 +6,7 @@
     android:orientation="vertical"
     android:weightSum="1">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar022"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/primary"

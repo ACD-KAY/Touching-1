@@ -42,7 +42,7 @@ public class Activity_03 extends AppCompatActivity {
 
 
 
-    private ImageButton btn,btn1,btn2,btn3;
+    private ImageButton btn2,btn3;
 
     private RecyclerView mRecyclerView;
     private MyHandler mHandler=new MyHandler(this);
@@ -107,7 +107,7 @@ public class Activity_03 extends AppCompatActivity {
             }
         });
         mRecyclerView.addOnItemTouchListener(new SwipeItemLayout.OnSwipeItemTouchListener(this));
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar03);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
         //((MultiImageView)findViewById(R.id.chat_item_test)).addImage(BitmapFactory.decodeResource(getResources(),R.mipmap.bussiness_man));
@@ -182,14 +182,14 @@ public class Activity_03 extends AppCompatActivity {
                 });
         //list.add(new message_data(1,"1","1","1"));
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mAdapter = new MyAdapter_03(this,list);
 
-        mAdapter.setHasStableIds(true);
+
+
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
-        mRecyclerView.setAdapter(mAdapter);
+
         /*mAdapter.setOnItemClickListener(new MyAdapter_03.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -259,11 +259,7 @@ public class Activity_03 extends AppCompatActivity {
         return mDropdown;
 
     }
-    public void link_man(View view){
-        Intent i=new Intent(Activity_03.this,Activity_05.class);
-        startActivity(i);
-        finish();
-    }
+
     private static class MyHandler extends Handler {
 
         //对Activity的弱引用
@@ -286,6 +282,9 @@ public class Activity_03 extends AppCompatActivity {
                     break;
                 case 2:
                     activity.list=(ArrayList<RecentContact>)msg.obj;
+                    activity.mAdapter = new MyAdapter_03(activity,activity.list);
+                    activity.mAdapter.setHasStableIds(true);
+                    activity.mRecyclerView.setAdapter(activity.mAdapter);
                     //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
                     break;
                 case 3:

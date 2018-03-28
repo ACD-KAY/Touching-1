@@ -8,8 +8,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.RequestOptions;
+import com.netease.nimlib.sdk.team.model.Team;
 import com.stfalcon.multiimageview.MultiImageView;
 
 import java.util.ArrayList;
@@ -20,16 +24,16 @@ import java.util.ArrayList;
 
 public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meeting_adapter.ViewHolder> {
     private OnItemClickListener onItemClickListener;
-    private ArrayList<meeting_data> mData;
+    private ArrayList<Team> mData;
     private Context context;
     private Resources resources;
-    public fragment_meeting_adapter(Context context, ArrayList<meeting_data> data) {
+    public fragment_meeting_adapter(Context context, ArrayList<Team> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
     }
 
-    public void updateData(ArrayList<meeting_data> data) {
+    public void updateData(ArrayList<Team> data) {
         this.mData = data;
         notifyDataSetChanged();
     }
@@ -49,13 +53,15 @@ public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meet
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
-        Bitmap bitmap= BitmapFactory.decodeResource(resources,mData.get(position).getImgurl());
-        holder.meeting_image.addImage(bitmap);
-        holder.meeting_image.setShape(MultiImageView.Shape.CIRCLE);
-        holder.meeting_name.setText(mData.get(position).getMeeting_name());
-        holder.meeting_time.setText(mData.get(position).getMeeting_time());
-        holder.meeting_place.setText(mData.get(position).getMeeting_place());
 
+        Glide.with(context)
+                .load(okhttpurl.url_image)
+                .apply(new RequestOptions()
+                .circleCrop()
+                .placeholder(R.drawable.vector_drawable__meeting_image_black))
+                .into(holder.meeting_image);
+        holder.meeting_name.setText(mData.get(position).getName());
+        holder.meeting_idnumber.setText(mData.get(position).getId());
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View v) {
@@ -76,16 +82,16 @@ public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meet
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        MultiImageView meeting_image;
+        ImageView meeting_image;
         TextView meeting_name;
-        TextView meeting_time;
-        TextView meeting_place;
+        TextView meeting_idnumber;
+
         public ViewHolder(View itemView) {
             super(itemView);
             meeting_image= itemView.findViewById(R.id.meeting_image);
             meeting_name=itemView.findViewById(R.id.meeting_name);
-            meeting_time=itemView.findViewById(R.id.meeting_time);
-            meeting_place=itemView.findViewById(R.id.meeting_place);
+            meeting_idnumber=itemView.findViewById(R.id.meeting_idnumber);
+
         }
     }
     public interface OnItemClickListener {

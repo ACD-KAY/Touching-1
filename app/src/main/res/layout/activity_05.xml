@@ -6,7 +6,7 @@
     xmlns:Android="http://schemas.android.com/tools"
     android:orientation="vertical">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar05"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/primary"
@@ -14,15 +14,15 @@
         app:contentInsetLeft="0dp"
         >
 
-        <com.stfalcon.multiimageview.MultiImageView
-            android:id="@+id/my_head_portrait"
+        <ImageButton
+            android:id="@+id/my_head_portrait05"
             android:layout_height="30dp"
             android:layout_width="30dp"
-            android:src="@drawable/vector_drawable_bussiness_man"
             android:background="@color/primary"
+
             android:padding="0dp"
-            android:scaleType="fitXY"
-            android:onClick="head_portrait_click"/>
+
+            />
         <TextView
             android:layout_height="wrap_content"
             android:layout_width="wrap_content"
@@ -34,25 +34,27 @@
 
 
         <ImageButton
-            android:id="@+id/addfriends"
+            android:id="@+id/newfriends05"
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_gravity="right"
             android:background="@color/primary"
-            android:padding="0dp"
+
             android:scaleType="fitXY"
             android:src="@drawable/vector_drawable_newfriend_request"
+
             android:layout_marginRight="10dp"/>
+
 
     </android.support.v7.widget.Toolbar>
     <com.ajguan.library.EasyRefreshLayout
-        android:id="@+id/friends_easylayout"
+        android:id="@+id/friends_easylayout05"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1">
 
         <android.support.v7.widget.RecyclerView
-            android:id="@+id/my_recycler_view_friends"
+            android:id="@+id/my_recycler_view_friends05"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"

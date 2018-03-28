@@ -14,9 +14,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.tsy.sdk.myokhttp.MyOkHttp;
-import com.tsy.sdk.myokhttp.response.GsonResponseHandler;
-import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
+
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -46,7 +44,7 @@ public class Activity_02 extends AppCompatActivity  {
     private Button send_msg;
     private Button check;
     //private Gson gson;
-    private MyOkHttp mMyOkhttp;
+
     public String identity;
    // private final Activity_02.MyHandler mHandler = new Activity_02.MyHandler(this);
     private MyHandler mHandler=new MyHandler(this);
@@ -56,7 +54,7 @@ public class Activity_02 extends AppCompatActivity  {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_02);
-        mMyOkhttp = NimApplication.getInstance().getMyOkHttp();
+
         phonenumber=findViewById(R.id.phonenumber);
         identity_code=findViewById(R.id.identity_code);
         send_msg =  findViewById(R.id.send_msg);
@@ -141,7 +139,7 @@ public class Activity_02 extends AppCompatActivity  {
 
     @Override
     protected void onDestroy() {
-        mMyOkhttp.cancel(1);
+
         super.onDestroy();
     }
 

@@ -28,7 +28,7 @@ public class fragment_meeting_notes extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         this.mContext=getActivity();
-        view=inflater.inflate(R.layout.fragment_meeting_brief_message, null);
+        view=inflater.inflate(R.layout.fragment_meeting_brief_message_notes, null);
         initData();
         initView();
         return view;
@@ -39,7 +39,7 @@ public class fragment_meeting_notes extends Fragment {
     }
 
     private void initView() {
-        mRecyclerView =  view.findViewById(R.id.fragment_my_meeting);
+        mRecyclerView =  view.findViewById(R.id.fragment_my_meeting_notes);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter

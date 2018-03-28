@@ -30,9 +30,10 @@ public class Activity_15 extends AppCompatActivity {
 
 
 
-        //spinner();
-        //spinner2();
+        /*spinner();
+        spinner2();*/
 
+        /**发布投票*/
         btn1=(TextView)findViewById(R.id.B_release);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -42,6 +43,7 @@ public class Activity_15 extends AppCompatActivity {
             }
         });
 
+        /**返回*/
         btn2=(Button)findViewById(R.id.B_before);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,10 +52,10 @@ public class Activity_15 extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
+        
 
         /**标题栏设置*/
-        android.support.v7.widget.Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar)findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle("");
     }
@@ -79,7 +81,7 @@ public class Activity_15 extends AppCompatActivity {
     }*/
 
     /**提醒时间选择*/
-   /* private void spinner2() {
+   /*private void spinner2() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Remind);
         String[] items = getResources().getStringArray(R.array.S_remind);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);

@@ -9,7 +9,7 @@
 
     tools:context="com.hhu.acd.touching.Activity_01">
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar01"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/primary"
@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:text="帐号登录"
             android:textSize="20sp"
-            android:textColor="@color/white"
+            android:textColor="#ffffff"
             android:layout_gravity="center_horizontal"
             />
 

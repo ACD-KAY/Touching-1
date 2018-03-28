@@ -9,13 +9,37 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.hhu.acd.touching.Activity_12_2">
+    
+    <android.support.v7.widget.Toolbar
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/colorPrimary"
+        android:fitsSystemWindows="true"
+        app:contentInsetStart="0dp">
+        <Button
+            android:id="@+id/B_before"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/ic_navigate_before_white_24dp"
+            android:background="@null"
+            android:text="返回"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
 
-    <RelativeLayout
+
+            android:gravity="center_vertical"
+            />
+
+    </android.support.v7.widget.Toolbar>
+
+     <RelativeLayout
         android:id="@+id/RL"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
-        android:layout_alignParentStart="true">
+        android:layout_alignParentLeft="true">
 
         <ImageView
             android:id="@+id/image"
@@ -24,83 +48,70 @@
             android:scaleType="center"
             android:src="@drawable/touxiang"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="60dp" />
+            android:layout_marginTop="100dp" />
 
         <TextView
             android:id="@+id/account"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="账号：123456789"
+            android:text="账号："
             android:textSize="25dp"
-            android:paddingLeft="35dp"
+            android:paddingLeft="50dp"
             android:layout_below="@+id/image"
-            android:layout_marginTop="80dp" />
+            android:layout_marginTop="60dp" />
+
+        <TextView
+            android:id="@+id/T_account"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:text="234567890"
+            android:textSize="25dp"
+            android:layout_below="@+id/image"
+            android:layout_marginTop="60dp"
+            android:layout_toRightOf="@+id/account"/>
 
         <TextView
             android:id="@+id/name"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
-            android:text="昵称：123"
+            android:text="昵称："
             android:textSize="25dp"
-            android:paddingLeft="35dp"
+            android:paddingLeft="50dp"
             android:layout_below="@+id/account"
-            android:layout_alignStart="@+id/account"/>
+            android:layout_alignLeft="@+id/account"/>
+
         <TextView
-            android:id="@+id/remark"
+            android:id="@+id/T_name"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="备注：123"
-            android:paddingLeft="35dp"
+            android:layout_height="60dp"
+            android:text="先森"
             android:textSize="25dp"
-            android:layout_below="@id/name"/>
+            android:layout_below="@+id/account"
+            android:layout_toRightOf="@+id/name"/>
+
+
 
         <Button
-            android:id="@+id/B_qg"
+            android:id="@+id/B_deletefriends"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:text="取消关注"
+            android:text="删除好友"
             android:textSize="20dp"
             android:background="#3F51B5"
-            android:layout_marginEnd="10dp"
+            android:layout_centerHorizontal="true"
             android:layout_below="@id/name"
-            android:layout_marginTop="100dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_marginTop="100dp" />
 
         <Button
-            android:id="@+id/B_add"
+            android:id="@+id/B_addfriends"
             android:layout_width="150dp"
             android:layout_height="wrap_content"
             android:text="加为好友"
             android:textSize="20dp"
             android:background="#3F51B5"
-            android:layout_marginStart="10dp"
+            android:layout_centerHorizontal="true"
             android:layout_below="@id/name"
-            android:layout_marginTop="1000dp"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:id="@+id/B_send"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="发消息"
-            android:textSize="20dp"
-            android:background="#3F51B5"
-            android:layout_marginStart="10dp"
-            android:layout_below="@id/name"
-            android:layout_marginTop="100dp"
-            android:layout_alignParentStart="true" />
-
-        <Button
-            android:id="@+id/B_g"
-            android:layout_width="150dp"
-            android:layout_height="wrap_content"
-            android:text="关注"
-            android:textSize="20dp"
-            android:background="#3F51B5"
-            android:layout_marginEnd="10dp"
-            android:layout_below="@id/name"
-            android:layout_marginTop="100dp"
-            android:layout_alignParentEnd="true"/>
+            android:layout_marginTop="100dp" />
 
     </RelativeLayout>
 

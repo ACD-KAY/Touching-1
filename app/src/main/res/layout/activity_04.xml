@@ -5,7 +5,7 @@
     android:orientation="vertical">
 
     <android.support.v7.widget.Toolbar
-        android:id="@+id/toolbar"
+        android:id="@+id/toolbar04"
         android:layout_width="match_parent"
         android:layout_height="48dp"
         android:background="@color/primary"
@@ -58,6 +58,10 @@
             android:layout_height="0dp"
             android:layout_weight="1"
             android:scrollbars="vertical"/>
+        <!--<com.hhu.acd.touching.CustomLoadingView
+            android:id="@+id/loadingView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>-->
     </com.ajguan.library.EasyRefreshLayout>
 
 

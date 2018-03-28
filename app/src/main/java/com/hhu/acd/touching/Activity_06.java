@@ -20,6 +20,7 @@ public class Activity_06 extends AppCompatActivity {
     private String[] mTitles = new String[]{"我参加的", "我发布的","我收藏的", "我的笔记"};
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_06);
 
@@ -32,8 +33,9 @@ public class Activity_06 extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent it = new Intent(Activity_06.this, Activity_04.class);
-                startActivity(it);
+                //Intent it = new Intent(Activity_06.this, Activity_04.class);
+                //startActivity(it);
+                finish();
             }
         });
 
@@ -59,9 +61,9 @@ public class Activity_06 extends AppCompatActivity {
         // 创建一个集合,装填Fragment
         ArrayList<Fragment> fragments = new ArrayList<>();
         // 装填
-        fragments.add(new fragment_meeting());
-        fragments.add(new fragment_meeting());
-        fragments.add(new fragment_meeting());
+        fragments.add(new fragment_meeting_join());
+        fragments.add(new fragment_meeting_create());
+        fragments.add(new fragment_meeting_collect());
         fragments.add(new fragment_meeting_notes());
         // 创建ViewPager适配器
         my_meeting_fragmentpageradapter myPagerAdapter = new my_meeting_fragmentpageradapter(getSupportFragmentManager());

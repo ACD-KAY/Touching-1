@@ -15,6 +15,7 @@ import com.netease.nimlib.sdk.uinfo.model.NimUserInfo;
 import com.stfalcon.multiimageview.MultiImageView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by liziming on 18-3-24.
@@ -23,16 +24,16 @@ import java.util.ArrayList;
 public class friends_list_05_adapter extends RecyclerView.Adapter<friends_list_05_adapter.ViewHolder>{
 //private OnItemClickListener onItemClickListener;
 
-    private ArrayList<NimUserInfo> mData;
+    private List<NimUserInfo> mData;
     private Context context;
     private Resources resources;
-    public friends_list_05_adapter(Context context, ArrayList<NimUserInfo> data) {
+    public friends_list_05_adapter(Context context, List<NimUserInfo> data) {
         this.context=context;
         this.resources = context.getResources();
         this.mData = data;
         }
 
-    public void updateData(ArrayList<NimUserInfo> data) {
+    public void updateData(List<NimUserInfo> data) {
         this.mData = data;
         notifyDataSetChanged();
         }
