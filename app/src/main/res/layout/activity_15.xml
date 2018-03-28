@@ -145,7 +145,7 @@
                 android:textSize="20sp"
                 android:layout_alignBaseline="@+id/Deadline"
                 android:layout_marginLeft="200dp"
-                android:onClick="logintime"/>
+                android:onClick="Display"/>
 
             <TextView
                 android:id="@+id/Remind"
