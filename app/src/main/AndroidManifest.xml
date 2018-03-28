@@ -87,7 +87,7 @@
             android:authorities="com.hhu.acd.touching.ipc.provider"
             android:exported="false"
             android:process=":core" />
-        <activity android:name=".Activity_01">
+        <activity android:name=".Activity_15">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -107,7 +107,7 @@
         <activity android:name=".Activity_13" />
         <activity android:name=".Activity_02" />
         <activity android:name=".Activity_14" />
-        <activity android:name=".Activity_15" />
+        <activity android:name=".Activity_01" />
         <activity android:name=".Activity_02_2" />
         <activity android:name=".Activity_12_2" />
     </application>

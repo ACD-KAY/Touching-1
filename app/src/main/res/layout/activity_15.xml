@@ -144,7 +144,8 @@
                 android:text="默认时间显示"
                 android:textSize="20sp"
                 android:layout_alignBaseline="@+id/Deadline"
-                android:layout_marginLeft="200dp"/>
+                android:layout_marginLeft="200dp"
+                android:onClick="logintime"/>
 
             <TextView
                 android:id="@+id/Remind"

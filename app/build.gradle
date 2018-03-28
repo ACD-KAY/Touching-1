@@ -50,7 +50,7 @@ dependencies {
     compile 'com.squareup.okhttp3:okhttp:3.9.1'
     //compile 'com.hyphenate:hyphenate-sdk-lite:3.3.0'
     compile 'com.github.bumptech.glide:glide:4.2.0'
-
+    compile project(path: ':uikit')
     //annotationProcessor 'com.github.bumptech.glide:compiler:4.2.0'
     compile 'com.netease.nimlib:basesdk:4.4.0'
 
@@ -62,4 +62,5 @@ dependencies {
     compile 'com.miguelcatalan:materialsearchview:1.4.0'
     compile 'com.allenliu.badgeview:library:1.1.1'
     compile 'com.alibaba:fastjson:1.1.68.android'
+    compile 'com.github.addappcn:android-pickers:1.0.3'
 }
