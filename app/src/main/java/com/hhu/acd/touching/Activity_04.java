@@ -22,18 +22,14 @@ import android.widget.Toast;
 
 import com.ajguan.library.EasyRefreshLayout;
 import com.ajguan.library.LoadModel;
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
-import com.miguelcatalan.materialsearchview.MaterialSearchView;
-import com.netease.nimlib.sdk.NIMClient;
-import com.netease.nimlib.sdk.RequestCallbackWrapper;
-import com.netease.nimlib.sdk.msg.MsgService;
-import com.netease.nimlib.sdk.msg.model.RecentContact;
+
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+
 
 import okhttp3.Call;
 import okhttp3.Callback;
@@ -56,7 +52,7 @@ public class Activity_04 extends AppCompatActivity {
     EasyRefreshLayout easyRefreshLayout;
     LayoutInflater mInflater;
     private PopupWindow mDropdown = null;
-    ArrayList<Meetings> list;
+    public ArrayList<Meetings> list;
     //private CustomLoadingView customLoadingView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,8 +63,8 @@ public class Activity_04 extends AppCompatActivity {
         to_recentmsg.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(Activity_04.this,Activity_03.class);
-                startActivity(i);
+                //Intent i=new Intent(Activity_04.this,Activity_03.class);
+                //startActivity(i);
                 finish();
             }
         });
@@ -110,13 +106,13 @@ public class Activity_04 extends AppCompatActivity {
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {
-                        OkHttpClient client = new OkHttpClient();
+                        OkHttpClient client2 = new OkHttpClient();
                         //RequestBody body = RequestBody.create();
                         Request request = new Request.Builder()
                                 .url(okhttpurl.url_searchmeetingbytime)
                                 .post(okhttp3.internal.Util.EMPTY_REQUEST)
                                 .build();
-                        client.newCall(request).enqueue(new Callback() {
+                        client2.newCall(request).enqueue(new Callback() {
                             @Override
                             public void onFailure(Call call, IOException e) {
                                // mHandler.obtainMessage(4).sendToTarget();
@@ -127,8 +123,9 @@ public class Activity_04 extends AppCompatActivity {
                             @Override
                             public void onResponse(Call call, Response response) throws IOException {
 
-                                mHandler.obtainMessage(3, new ArrayList<Meetings>(Arrays.asList(gson.fromJson(response.body().string().trim(),Meetings[].class)))).sendToTarget();
+                                mHandler.obtainMessage(3, (JSON.parseArray(response.body().string().trim(),Meetings.class))).sendToTarget();
                                // mHandler.obtainMessage(4).sendToTarget();
+                                //mHandler.obtainMessage(1,response.body().string().trim()).sendToTarget();
 
 
                             }
@@ -168,22 +165,23 @@ public class Activity_04 extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-
-                mHandler.obtainMessage(2, new ArrayList<Meetings>(Arrays.asList(gson.fromJson(response.body().string().trim(),Meetings[].class)))).sendToTarget();
-               // mHandler.obtainMessage(4).sendToTarget();
+                Message msg = Message.obtain();
+                msg.what=2;
+                //list=(ArrayList<Meetings>)JSON.parseArray(response.body().string().trim(),Meetings.class);
+                //mHandler.sendMessage(msg);
+                mHandler.obtainMessage(2, (JSON.parseArray(response.body().string().trim(),Meetings.class))).sendToTarget();
+                //mHandler.obtainMessage(1,response.body().string().trim()).sendToTarget();
 
 
             }
         });
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mAdapter = new meeting_list_04_adapter(this,list);
 
-        mAdapter.setHasStableIds(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_meetings);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
-        mRecyclerView.setAdapter(mAdapter);
+
 
 
 
@@ -254,26 +252,54 @@ public class Activity_04 extends AppCompatActivity {
                     Toast.makeText(activity, (String) msg.obj, Toast.LENGTH_LONG).show();
                     break;
                 case 2:
-                    activity.list=(ArrayList<Meetings>)msg.obj;
+                    //activity.list=(ArrayList<Meetings>)msg.obj;
                     //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
+                    activity.list=((ArrayList<Meetings>)msg.obj);
+                    activity.mAdapter = new meeting_list_04_adapter(activity,activity.list);
+
+                    activity.mAdapter.setHasStableIds(true);
+
+                    activity.mRecyclerView.setAdapter(activity.mAdapter);
                     break;
                 case 3:
+                    //activity.list=((ArrayList<Meetings>)msg.obj);
                     activity.mAdapter.updateData((ArrayList<Meetings>)msg.obj);
                     break;
-                /*case 4:
-                    activity.customLoadingView.stop();
-                    //activity.customLoadingView.setVisibility(View.GONE);
-                    break;*/
-                /*case 2:
-                    Toast.makeText(activity, "下载成功", Toast.LENGTH_SHORT).show();
-                    Bitmap bitmap = (Bitmap) msg.obj;
-                    activity.imageView.setVisibility(View.VISIBLE);
-                    activity.imageView.setImageBitmap(bitmap);
-                    break;*/
+
                 default:
                     super.handleMessage(msg);
                     break;
             }
         }
     }
+
+    /*private  Handler mHandler=new Handler() {
+
+
+        @Override
+        public void handleMessage(Message msg) {
+
+            switch (msg.what) {
+                case 1:
+                    Toast.makeText(getApplicationContext(), (String) msg.obj, Toast.LENGTH_LONG).show();
+                    break;
+                case 2:
+                    //activity.list=(ArrayList<Meetings>)msg.obj;
+                    //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
+                    list = (ArrayList<Meetings>) msg.obj;
+                    //mAdapter.notifyDataSetChanged();
+                    mRecyclerView.setAdapter(mAdapter);
+                    break;
+                case 3:
+                    list = (ArrayList<Meetings>) msg.obj;
+                    //mAdapter.notifyDataSetChanged();
+                    break;
+
+                default:
+                    super.handleMessage(msg);
+                    break;
+            }
+
+        }
+    };*/
 }

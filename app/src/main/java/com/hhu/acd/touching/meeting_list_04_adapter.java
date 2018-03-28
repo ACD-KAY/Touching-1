@@ -6,6 +6,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -56,12 +57,13 @@ public long getItemId(int position) {
         }
 @Override
 public void onBindViewHolder(final ViewHolder holder, int position) {
-    /*Glide.with(context)
+    Glide.with(context)
             .load(okhttpurl.url_image)
             .apply(new RequestOptions()
-            .placeholder(R.drawable.face))
-            .into(holder.meeting_brief_item_portrait);*/
-    holder.meeting_brief_item_portrait.setShape(MultiImageView.Shape.CIRCLE);
+
+            .circleCrop())
+            .into(holder.meeting_brief_item_portrait);
+
     holder.meeting_brief_item_name.setText(mData.get(position).getTname());
     holder.meeting_brief_item_place.setText(mData.get(position).getPlace());
     holder.meeting_brief_item_time.setText(sdf.format(mData.get(position).getStart())+"-"+sdf.format(mData.get(position).getEnd()));
@@ -75,7 +77,7 @@ public int getItemCount() {
 
 public  class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
     //private final WeakReference<Activity_02_2> mActivity;
-    MultiImageView meeting_brief_item_portrait;
+    ImageView meeting_brief_item_portrait;
     TextView meeting_brief_item_name;
     TextView meeting_brief_item_place;
     TextView meeting_brief_item_time;

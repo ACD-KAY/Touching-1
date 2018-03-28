@@ -39,7 +39,7 @@ public class fragment_meeting_notes extends Fragment {
     }
 
     private void initView() {
-        mRecyclerView =  view.findViewById(R.id.fragment_my_meeting);
+        mRecyclerView =  view.findViewById(R.id.fragment_my_meeting_notes);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter

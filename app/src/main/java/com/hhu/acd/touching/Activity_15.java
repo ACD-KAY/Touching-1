@@ -30,8 +30,8 @@ public class Activity_15 extends AppCompatActivity {
 
 
 
-        spinner();
-        spinner2();
+        /*spinner();
+        spinner2();*/
 
         /**发布投票*/
         btn1=(TextView)findViewById(R.id.B_release);
@@ -61,7 +61,7 @@ public class Activity_15 extends AppCompatActivity {
     }
 
     /** 投票类型选择*/
-    private void spinner() {
+    /*private void spinner() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Vtype);
         String[] items = getResources().getStringArray(R.array.S_votati=ontype);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
@@ -78,10 +78,10 @@ public class Activity_15 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }
+    }*/
 
     /**提醒时间选择*/
-   private void spinner2() {
+   /*private void spinner2() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Remind);
         String[] items = getResources().getStringArray(R.array.S_remind);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
@@ -98,6 +98,6 @@ public class Activity_15 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }
+    }*/
 
 }

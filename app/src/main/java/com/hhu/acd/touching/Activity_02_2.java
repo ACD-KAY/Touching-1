@@ -5,40 +5,15 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;import android.content.ContentValues;
-import android.content.Context;
-import android.database.Cursor;
-import android.database.SQLException;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.RelativeLayout;
-import android.widget.Toast;
-import android.app.Activity;
-import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.Toast;
+
 
 import com.google.gson.Gson;
-import com.tsy.sdk.myokhttp.MyOkHttp;
-import com.tsy.sdk.myokhttp.response.GsonResponseHandler;
-import com.tsy.sdk.myokhttp.response.JsonResponseHandler;
+
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
@@ -58,7 +33,7 @@ public class Activity_02_2 extends AppCompatActivity {
     private EditText mPwdCheck;                       //密码编辑
     private Button mSureButton;                       //确定按钮
     private Button mCancelButton;                     //取消按钮
-    private MyOkHttp mMyOkhttp;
+
     private Gson gson;
     String id;
     private MyHandler mHandler=new MyHandler(this);
@@ -67,7 +42,7 @@ public class Activity_02_2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_02_2);
         gson=new Gson();
-        mMyOkhttp = NimApplication.getInstance().getMyOkHttp();
+
         id=getIntent().getExtras().getString("id");
         mAccount = (EditText) findViewById(R.id.resetpwd_edit_name);
         mPwd = (EditText) findViewById(R.id.resetpwd_edit_pwd_old);
