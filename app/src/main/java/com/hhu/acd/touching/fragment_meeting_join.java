@@ -122,7 +122,7 @@ public class fragment_meeting_join extends Fragment {
             }
         });
         mLayoutManager = new LinearLayoutManager(this.getContext(), LinearLayoutManager.VERTICAL, false);
-        mAdapter = new fragment_meeting_adapter(this.getContext(), list);
+
     }
 
     private void initView() {
@@ -130,7 +130,7 @@ public class fragment_meeting_join extends Fragment {
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
-        mRecyclerView.setAdapter(mAdapter);
+
         mAdapter.setOnItemClickListener(new fragment_meeting_adapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
@@ -171,6 +171,9 @@ public class fragment_meeting_join extends Fragment {
 
                     activity.list = (ArrayList<Team>) msg.obj;
 
+                    activity.mAdapter = new fragment_meeting_adapter(activity.mContext, activity.list);
+                    activity.mAdapter.setHasStableIds(true);
+                    activity.mRecyclerView.setAdapter(activity.mAdapter);
                     break;
                 case 3:
 

@@ -193,14 +193,12 @@ public class Activity_05 extends AppCompatActivity {
                     }
                 });
         mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        mAdapter = new friends_list_05_adapter(this,list);
 
-        mAdapter.setHasStableIds(true);
         mRecyclerView = (RecyclerView) findViewById(R.id.my_recycler_view_friends05);
         // 设置布局管理器
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
-        mRecyclerView.setAdapter(mAdapter);
+
         //String linkmanstr=constant.URL_Linkman;
         //new MyAsyncTask(listview,this).execute(linkmanstr);
         BadgeFactory.createCircle(this).setBadgeCount(NIMClient.getService(SystemMessageService.class)
@@ -371,6 +369,10 @@ public class Activity_05 extends AppCompatActivity {
 
                             .into(activity.my_portrait);
                     activity.list=(List<NimUserInfo>)msg.obj;
+                    activity.mAdapter = new friends_list_05_adapter(activity,activity.list);
+
+                    activity.mAdapter.setHasStableIds(true);
+                    activity.mRecyclerView.setAdapter(activity.mAdapter);
                     //activity.mAdapter = new MyAdapter_03(activity,(List<RecentContact>)msg.obj);
                     break;
                 case 3:
