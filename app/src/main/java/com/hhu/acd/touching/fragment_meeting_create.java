@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.netease.nimlib.sdk.team.model.Team;
 
@@ -75,7 +76,7 @@ public class fragment_meeting_create extends Fragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
 
-                mHandler.obtainMessage(2, new ArrayList<Meetings>(Arrays.asList(gson.fromJson(response.body().string().trim(),Meetings[].class)))).sendToTarget();
+                mHandler.obtainMessage(2, (JSON.parseArray(response.body().string().trim(),Meetings.class))).sendToTarget();
                 // mHandler.obtainMessage(4).sendToTarget();
 
 

@@ -2,31 +2,21 @@ package com.hhu.acd.touching;
 
 import android.app.Application;
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.Color;
 import android.os.Environment;
 import android.text.TextUtils;
 
 
 import com.netease.nimlib.sdk.NIMClient;
 import com.netease.nimlib.sdk.SDKOptions;
-import com.netease.nimlib.sdk.StatusBarNotificationConfig;
 import com.netease.nimlib.sdk.auth.LoginInfo;
-import com.netease.nimlib.sdk.msg.constant.SessionTypeEnum;
-import com.netease.nimlib.sdk.uinfo.UserInfoProvider;
+import com.netease.nimlib.sdk.mixpush.NIMPushClient;
 import com.netease.nimlib.sdk.uinfo.model.UserInfo;
 import com.netease.nimlib.sdk.util.NIMUtil;
-
 
 import java.io.IOException;
 import java.util.Map;
 
-import okhttp3.OkHttpClient;
 
-
-/**
- * Created by liziming on 18-3-18.
- */
 
 public class NimApplication extends Application {
     public static Map<String, Long> map;
@@ -83,7 +73,10 @@ public class NimApplication extends Application {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
+        if (TextUtils.isEmpty(storageRootPath)) {
+            // SD卡应用公共存储区(APP卸载后，该目录不会被清除，下载安装APP后，缓存数据依然可以被加载。SDK默认使用此目录)，该存储区域需要写权限!
+            storageRootPath = Environment.getExternalStorageDirectory() + "/" + DemoCache.getContext().getPackageName();
+        }
 
         return storageRootPath;
     }
