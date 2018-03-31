@@ -87,4 +87,6 @@
   <color name="blue_semi_pressed">#738ffe</color>
   <color name="green">#4caf50</color>
   <color name="green_pressed">#388e3c</color>
+
+  <color name="gray">#E3E3E3</color>
 </resources>
