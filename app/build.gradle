@@ -61,5 +61,5 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.68.android'
     compile 'com.github.addappcn:android-pickers:1.0.3'
     compile 'com.github.canner:android-stepsview:1.2'
-    compile 'com.scalified:fab:1.1.3'
+    implementation 'me.jahirfiquitiva:FABsMenu:1.1.2'
 }

@@ -81,4 +81,10 @@
   <color name="fab_material_black">#000000</color>
   <!--Material White-->
   <color name="fab_material_white">#ffffff</color>
+  <color name="pink">#e91e63</color>
+  <color name="pink_pressed">#ec407a</color>
+  <color name="blue_semi">#5677fc</color>
+  <color name="blue_semi_pressed">#738ffe</color>
+  <color name="green">#4caf50</color>
+  <color name="green_pressed">#388e3c</color>
 </resources>
