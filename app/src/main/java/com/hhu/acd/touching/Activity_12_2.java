@@ -8,9 +8,11 @@ import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageButton;
 
 public class Activity_12_2 extends AppCompatActivity {
-    private Button btn1,btn2,btn3;
+    private ImageButton btn1;
+    private Button btn2,btn3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,7 +26,7 @@ public class Activity_12_2 extends AppCompatActivity {
         toolbar.setTitle("");
         
          /** 返回前一个界面*/
-        btn1=(Button)findViewById(R.id.B_before);
+        btn1=(ImageButton)findViewById(R.id.B_before);
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

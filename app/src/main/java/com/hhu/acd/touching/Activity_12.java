@@ -10,10 +10,11 @@ import android.view.Window;
 import android.view.View;
 import android.widget.Button;
 import android.support.v7.widget.Toolbar;
+import android.widget.ImageButton;
 
 public class Activity_12 extends AppCompatActivity {
     
-     private Button btn;
+     private ImageButton btn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class Activity_12 extends AppCompatActivity {
 
 
         /** 返回到前一个界面"*/
-        btn=(Button)findViewById(R.id.B_before);
+        btn=(ImageButton)findViewById(R.id.B_before);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

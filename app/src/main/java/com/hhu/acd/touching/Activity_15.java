@@ -12,6 +12,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -23,7 +24,7 @@ import cn.addapp.pickers.picker.DateTimePicker;
 
 public class Activity_15 extends AppCompatActivity {
     private TextView btn1;
-    private Button btn2;
+    private ImageButton btn2;
 
 
     @Override
@@ -47,7 +48,7 @@ public class Activity_15 extends AppCompatActivity {
         });
 
         /**返回*/
-        btn2=(Button)findViewById(R.id.B_before);
+        btn2=(ImageButton)findViewById(R.id.B_before);
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
