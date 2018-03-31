@@ -54,12 +54,12 @@ public class fragment_meeting_adapter extends RecyclerView.Adapter<fragment_meet
     public void onBindViewHolder(final ViewHolder holder, int position) {
         // 绑定数据
 
-        Glide.with(context)
+        /*Glide.with(context)
                 .load(okhttpurl.url_image)
                 .apply(new RequestOptions()
                 .circleCrop()
                 .placeholder(R.drawable.vector_drawable__meeting_image_black))
-                .into(holder.meeting_image);
+                .into(holder.meeting_image);*/
         holder.meeting_name.setText(mData.get(position).getName());
         holder.meeting_idnumber.setText(mData.get(position).getId());
         holder.itemView.setOnClickListener(new View.OnClickListener() {

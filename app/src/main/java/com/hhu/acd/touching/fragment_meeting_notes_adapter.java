@@ -72,14 +72,13 @@ public class fragment_meeting_notes_adapter extends RecyclerView.Adapter<fragmen
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        //MultiImageView meeting_image;
+
         TextView note_time;
         TextView note_content;
-        //TextView meeting_place;
+
         public ViewHolder(View itemView) {
             super(itemView);
-            //meeting_image= itemView.findViewById(R.id.meeting_image);
-            //meeting_name=itemView.findViewById(R.id.meeting_name);
+
             note_time=itemView.findViewById(R.id.meeting_notes_time);
             note_content=itemView.findViewById(R.id.meeting_notes_content);
         }

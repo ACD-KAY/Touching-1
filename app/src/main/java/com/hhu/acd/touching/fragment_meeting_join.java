@@ -131,7 +131,7 @@ public class fragment_meeting_join extends Fragment {
         mRecyclerView.setLayoutManager(mLayoutManager);
         // 设置adapter
 
-        mAdapter.setOnItemClickListener(new fragment_meeting_adapter.OnItemClickListener() {
+        /*mAdapter.setOnItemClickListener(new fragment_meeting_adapter.OnItemClickListener() {
             @Override
             public void onItemClick(View view, int position) {
                 Toast.makeText(mContext, "click " + position + " item", Toast.LENGTH_SHORT).show();
@@ -142,7 +142,7 @@ public class fragment_meeting_join extends Fragment {
             //public void onItemLongClick(View view, int position) {
             //Toast.makeText(MDRvActivity.this,"long click " + position + " item", Toast.LENGTH_SHORT).show();
             //}
-        });
+        });*/
 
 
     }
@@ -158,7 +158,7 @@ public class fragment_meeting_join extends Fragment {
 
         @Override
         public void handleMessage(Message msg) {
-            fragment_meeting_join activity = mActivity.get();
+            final fragment_meeting_join activity = mActivity.get();
             if (activity == null) {
                 super.handleMessage(msg);
                 return;
@@ -174,6 +174,13 @@ public class fragment_meeting_join extends Fragment {
                     activity.mAdapter = new fragment_meeting_adapter(activity.mContext, activity.list);
                     activity.mAdapter.setHasStableIds(true);
                     activity.mRecyclerView.setAdapter(activity.mAdapter);
+                    activity.mAdapter.setOnItemClickListener(new fragment_meeting_adapter.OnItemClickListener() {
+                        @Override
+                        public void onItemClick(View view, int position) {
+                            Toast.makeText(activity.getContext(), "click " + position + " item", Toast.LENGTH_SHORT).show();
+
+                        }
+                    });
                     break;
                 case 3:
 

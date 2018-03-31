@@ -6,6 +6,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 
@@ -27,7 +28,7 @@ public class Activity_06 extends AppCompatActivity {
         initView(); // 初始化控件
         initViewPager(); // 初始化ViewPager
 
-
+        Log.d("aa", "execute");
         /**返回会议列表界面*/
         btn=(ImageButton)findViewById(R.id.mymeeting_back);
         btn.setOnClickListener(new View.OnClickListener() {
@@ -39,15 +40,7 @@ public class Activity_06 extends AppCompatActivity {
             }
         });
 
-        /**跳转到他人申请的会议*/
-        btn2=(ImageButton)findViewById(R.id.new_meeting_request);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Activity_06.this, Activity_07.class);
-                startActivity(it);
-            }
-        });
+
     }
     /**
      * 初始化控件

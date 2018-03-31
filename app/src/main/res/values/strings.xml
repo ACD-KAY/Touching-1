@@ -15,5 +15,9 @@
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."
     </string>
-
+    <string-array name="labels">
+        <item>报名</item>
+        <item>签到</item>
+        <item>结束</item>
+    </string-array>
 </resources>
