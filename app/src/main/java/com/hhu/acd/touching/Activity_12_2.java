@@ -30,6 +30,7 @@ public class Activity_12_2 extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 finish();
             }
         });
@@ -37,24 +38,10 @@ public class Activity_12_2 extends AppCompatActivity {
 
         /**添加好友*/
         btn2=(Button)findViewById(R.id.B_addfriends);
-        btn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Activity_12_2.this, Activity_14.class);
-                startActivity(it);
-            }
-        });
+
 
         /**删除好友*/
         btn3=(Button)findViewById(R.id.B_deletefriends);
-        btn3.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent it = new Intent(Activity_12_2.this,Activity_12.class);
-                startActivity(it);
-            }
-        });
-        
-        
+
     }
 }
