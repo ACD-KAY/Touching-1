@@ -49,7 +49,7 @@
             android:textSize="25dp"
             android:paddingLeft="50dp"
             android:layout_below="@+id/image"
-            android:layout_marginTop="50dp" />
+            android:layout_marginTop="45dp" />
 
         <TextView
             android:id="@+id/T_account"
