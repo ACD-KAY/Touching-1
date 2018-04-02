@@ -4,7 +4,6 @@
     android:id="@+id/activity_votation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-
     android:background="#FFFFFF">
 
     <android.support.v7.widget.Toolbar
@@ -12,7 +11,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="48dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/primary"
         android:fitsSystemWindows="true"
         app:contentInsetStart="0dp">
 
@@ -21,12 +20,11 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:src="@drawable/vector_drawable_back"
-            android:background="@null"
-            android:textSize="20sp"
-            android:textColor="#FFFFFF"
+            android:background="@color/primary"
             android:gravity="center_vertical"
             android:scaleType="fitXY"
-            android:padding="0dp"/>
+            android:padding="0dp"
+            android:layout_marginLeft="16dp"/>
 
 
         <TextView
