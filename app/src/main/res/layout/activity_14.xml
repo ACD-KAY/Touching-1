@@ -7,38 +7,44 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/subject"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintVertical_bias="0.016"
-        app:layout_constraintHorizontal_bias="0.502"
-        android:textSize="20sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:text="验证消息"/>
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar03"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@color/primary"
+        android:fitsSystemWindows="true"
+        app:contentInsetLeft="0dp"
+        >
 
-    <ImageButton
-        android:id="@+id/ib1"
-        android:layout_height="35dp"
-        android:layout_width="34dp"
-        app:srcCompat="?attr/homeAsUpIndicator"/>
+        <ImageButton
+            android:id="@+id/ib1"
+            android:layout_height="30dp"
+            android:layout_width="30dp"
+            android:src="@drawable/vector_drawable_back"
+            android:background="@color/primary"
+            android:padding="0dp"
+            android:scaleType="fitXY"/>
 
-    <ImageButton
-        android:id="@+id/ib2"
-        android:layout_height="34dp"
-        android:layout_width="36dp"
-        app:layout_constraintVertical_bias="0.0"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:srcCompat="@android:drawable/ic_input_add"
-        android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/subject"/>
+        <TextView
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            android:text="验证消息"
+            android:layout_gravity="center_horizontal"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"/>
+
+
+        <Button
+            android:id="@+id/ib2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@color/primary"
+            android:text="添加"
+            android:textSize="20sp"
+            android:textColor="#FFFFFF"
+            android:layout_gravity="right"/>
+
+    </android.support.v7.widget.Toolbar>
 
     <Button
         android:layout_height="wrap_content"
