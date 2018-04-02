@@ -77,9 +77,9 @@ public class Activity_15 extends AppCompatActivity {
         t.setText(str.toString());
     }
     /** 投票类型选择*/
-    /*private void spinner() {
+    private void spinner() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Vtype);
-        String[] items = getResources().getStringArray(R.array.S_votati=ontype);
+        String[] items = getResources().getStringArray(R.array.S_votationtype);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
@@ -94,10 +94,10 @@ public class Activity_15 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }*/
+    }
 
     /**提醒时间选择*/
-   /*private void spinner2() {
+   private void spinner2() {
         Spinner spinner = (Spinner) findViewById(R.id.S_Remind);
         String[] items = getResources().getStringArray(R.array.S_remind);
         ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item,items);
@@ -114,7 +114,7 @@ public class Activity_15 extends AppCompatActivity {
             public void onNothingSelected(AdapterView<?> adapterView) {
             }
         });
-    }*/
+    }
     public void Display(View v){
 
         DateTimePicker picker = new DateTimePicker(this, DateTimePicker.HOUR_24);

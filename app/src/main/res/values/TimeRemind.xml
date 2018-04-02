@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <array name="S_remind">
+        <item>提前30分钟</item>
+        <item>提前5分钟</item>
+        <item>不提醒</item>
+    </array>
+</resources>
