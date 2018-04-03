@@ -8,7 +8,8 @@
         android:layout_width="43dp"
         android:layout_height="43dp"
         android:padding="7dp"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:background="@drawable/touxiang"/>
     <TextView
         android:id="@+id/linkman_name"
         android:layout_width="match_parent"
