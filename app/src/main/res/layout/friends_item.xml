@@ -8,6 +8,7 @@
     android:layout_height="wrap_content"
     android:paddingTop="5dp"
     android:paddingBottom="5dp">
+
     <com.stfalcon.multiimageview.MultiImageView
         android:id="@+id/friends_item_portrait"
         android:layout_width="50dp"
@@ -15,8 +16,9 @@
         android:layout_marginLeft="6dp"
         android:layout_marginRight="6dp"
         android:scaleType="centerCrop"
-        android:background="@drawable/face"
+        android:background="@drawable/touxiang"
         />
+
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

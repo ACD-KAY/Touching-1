@@ -7,10 +7,6 @@
     android:layout_height="wrap_content"
     android:clickable="true"
     android:orientation="vertical">
-    /**
-    * Created by guanaj on .
-    */
-
 
         <LinearLayout
             android:id="@+id/main"
@@ -31,7 +27,7 @@
                 android:layout_marginLeft="6dp"
                 android:layout_marginRight="6dp"
                 android:scaleType="centerCrop"
-
+                android:background="@drawable/fengmian"
 
                 />
             <LinearLayout
