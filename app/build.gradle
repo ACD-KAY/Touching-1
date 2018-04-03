@@ -1,3 +1,4 @@
+
 apply plugin: 'com.android.application'
 
 android {
@@ -61,5 +62,6 @@ dependencies {
     compile 'com.alibaba:fastjson:1.1.68.android'
     compile 'com.github.addappcn:android-pickers:1.0.3'
     compile 'com.github.canner:android-stepsview:1.2'
+    compile 'com.android.support:design:22.2.0'
     implementation 'me.jahirfiquitiva:FABsMenu:1.1.2'
 }
