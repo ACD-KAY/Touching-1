@@ -97,16 +97,27 @@ public class votation_adapter extends BaseAdapter {
 
         vh.edixt.addTextChangedListener(watcher);
         vh.edixt.setTag(watcher);
-        vh.button.setImageResource(R.drawable.ic_add_circle_blue_700_24dp);
-        if(mData.get(position).getVisible()==true) vh.button.setVisibility(View.VISIBLE);
+        vh.button.setImageResource(R.drawable.nim_team_member_item_delete_icon);
+
+        if(position==this.getCount()) vh.button.setVisibility(View.VISIBLE);
         else vh.button.setVisibility(View.INVISIBLE);
         vh.edixt.setHint("选项"+position);
+
+      /* vh.button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position=this.getCount();
+                mData.remove(last_item);
+                ;
+            }
+        });*/
 
 
 
 
         return convertView;
     }
+
     /**
      * 用于存放一个ItemView中的控件,由于这里只有两个控件,那么声明两个控件即可
      */
@@ -114,5 +125,6 @@ public class votation_adapter extends BaseAdapter {
         ImageButton button;
         EditText edixt;
     }
+
 
 }

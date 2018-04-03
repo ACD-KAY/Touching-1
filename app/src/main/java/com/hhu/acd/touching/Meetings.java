@@ -21,6 +21,16 @@ public class Meetings {
     
     private  String intro;
 
+    public Meetings(String tname,String owner,Date start,Date end,String place,String intro){
+        this.tname=tname;
+        this.owner=owner;
+        this.start=start;
+        this.end=end;
+        this.place=place;
+        this.intro=intro;
+    }
+
+
     public Integer getIdmeetings() {
         return idmeetings;
     }
